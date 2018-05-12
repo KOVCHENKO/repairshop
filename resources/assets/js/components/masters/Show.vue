@@ -49,7 +49,7 @@
                         {label: 'id', field: 'id'},
                         {label: 'Имя', field: 'name'},
                         {label: 'Должность', field: 'position'},
-                        {label: 'Ставка', field: 'storerate'},
+                        {label: 'Ставка', field: 'rate'},
                         {label: '', component: 'actions-master'}
                     ]
                 },
@@ -58,6 +58,7 @@
 
         methods: {
             createOption() {
+                this.singleMaster.id = 0;
                 this.singleMaster.name = '';
                 this.singleMaster.rate = 0;
                 this.singleMaster.position = '';

@@ -20,3 +20,10 @@ Route::post('/master/create', 'Repairshop\MasterController@create');
 Route::post('/master/update', 'Repairshop\MasterController@update');
 Route::get('/master/get_by_id/{id}', 'Repairshop\MasterController@getById');
 Route::get('/master/delete/{id}', 'Repairshop\MasterController@delete');
+
+/* Маршруты управления запасными частями */
+Route::get('/spare/get_all', 'Repairshop\SpareController@getAll');
+Route::post('/spare/create', 'Repairshop\SpareController@create');
+Route::post('/spare/update', 'Repairshop\SpareController@update');
+Route::get('/spare/get_by_id/{id}', 'Repairshop\SpareController@getById');
+Route::get('/spare/delete/{id}', 'Repairshop\SpareController@delete');
