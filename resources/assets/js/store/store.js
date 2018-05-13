@@ -4,6 +4,7 @@ import admin from './modules/admin';
 import master from './modules/master';
 import spare from './modules/spare';
 import order from './modules/order';
+import service from './modules/service';
 
 export const store = new Vuex.Store({
     state: {
@@ -51,7 +52,8 @@ export const store = new Vuex.Store({
         admin,   // Администраторы (сотрудники системы)
         master,  // Мастера (ремонтники системы)
         spare,   // Запчасти
-        order    // Заказы
+        order,   // Заказы
+        service  // услуги
     }
 
 });

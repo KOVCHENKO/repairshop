@@ -35,3 +35,10 @@ Route::post('/order/create', 'Repairshop\OrderController@create');
 Route::post('/order/update', 'Repairshop\OrderController@update');
 Route::get('/order/get_by_id/{id}', 'Repairshop\OrderController@getById');
 Route::get('/order/delete/{id}', 'Repairshop\OrderController@delete');
+
+/* Маршруты управления услугами */
+Route::get('/service/get_all', 'Repairshop\ServiceController@getAll');
+Route::post('/service/create', 'Repairshop\ServiceController@create');
+Route::post('/service/update', 'Repairshop\ServiceController@update');
+Route::get('/service/get_by_id/{id}', 'Repairshop\ServiceController@getById');
+Route::get('/service/delete/{id}', 'Repairshop\ServiceController@delete');
