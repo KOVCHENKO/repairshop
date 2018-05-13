@@ -53,7 +53,7 @@
                         break;
                         /* TODO: проверка на то, есть ли у пользователя привязанный класс и школа. Если нет. То компонент с заполнением */
                     case 'admin':
-                        self.$router.push('/tests/factory/show_blocks');
+                        self.$router.push('/order/show');
                         break;
                     case 'superadmin':
                         self.$router.push('/admins/show');

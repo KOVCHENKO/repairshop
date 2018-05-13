@@ -6,6 +6,7 @@ Route::get('/', function () {
 
 /* Вход в систему */
 Route::post('/login', 'Auth\LoginController@login');
+Route::get('/logout', 'Auth\LoginController@logout');
 
 /* Маршруты управления администраторами (сотрудниками магазина) */
 Route::get('/admin/get_all', 'Users\AdminController@getAll');
@@ -27,3 +28,10 @@ Route::post('/spare/create', 'Repairshop\SpareController@create');
 Route::post('/spare/update', 'Repairshop\SpareController@update');
 Route::get('/spare/get_by_id/{id}', 'Repairshop\SpareController@getById');
 Route::get('/spare/delete/{id}', 'Repairshop\SpareController@delete');
+
+/* Маршруты управления заказами */
+Route::get('/order/get_all', 'Repairshop\OrderController@getAll');
+Route::post('/order/create', 'Repairshop\OrderController@create');
+Route::post('/order/update', 'Repairshop\OrderController@update');
+Route::get('/order/get_by_id/{id}', 'Repairshop\OrderController@getById');
+Route::get('/order/delete/{id}', 'Repairshop\OrderController@delete');
