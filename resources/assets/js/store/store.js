@@ -6,6 +6,7 @@ import spare from './modules/spare';
 import order from './modules/order';
 import service from './modules/service';
 import auto from './modules/auto';
+import customer from './modules/customer';
 
 export const store = new Vuex.Store({
     state: {
@@ -55,7 +56,8 @@ export const store = new Vuex.Store({
         spare,   // Запчасти
         order,   // Заказы
         service, // услуги
-        auto     // Автомобили
+        auto,    // Автомобили
+        customer // Клиенты
     }
 
 });

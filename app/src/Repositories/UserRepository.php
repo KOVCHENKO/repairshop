@@ -55,4 +55,25 @@ class UserRepository
 
         return $id;
     }
+
+    public function getAllCustomers()
+    {
+        return $this->user->where('role', '=', 'customer')->get();
+    }
+
+    public function createCustomer($singleCustomer)
+    {
+        return $this->user->create($singleCustomer);
+    }
+
+    public function updateCustomer($singleCustomer)
+    {
+        $user = $this->user->find($singleCustomer['id']);
+        $user->name = $singleCustomer['name'];
+        $user->login = $singleCustomer['login'];
+        $user->password = $singleCustomer['password'];
+        $user->save();
+
+        return $this->user;
+    }
 }

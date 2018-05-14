@@ -54,3 +54,10 @@ Route::post('/auto/create', 'Repairshop\AutoController@create');
 Route::post('/auto/update', 'Repairshop\AutoController@update');
 Route::get('/auto/get_by_id/{id}', 'Repairshop\AutoController@getById');
 Route::get('/auto/delete/{id}', 'Repairshop\AutoController@delete');
+
+/* Маршруты управления Клиентами */
+Route::get('/customer/get_all', 'Users\CustomerController@getAll');
+Route::post('/customer/create', 'Users\CustomerController@create');
+Route::post('/customer/update', 'Users\CustomerController@update');
+Route::get('/customer/get_by_id/{id}', 'Users\CustomerController@getById');
+Route::get('/customer/delete/{id}', 'Users\AutoController@delete');
