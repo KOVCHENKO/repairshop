@@ -11,28 +11,15 @@
                                 :onNext="nextClicked"
                                 :onBack="backClicked">
                             <div slot="page1">
-                                <!-- Выбор машины -->
-                                <div class="row">
-                                    <div class="col-sm-12 clearfix">
-                                        <input type="text" class="search" placeholder="выберите машину"/>
-                                    </div>
-                                </div>
+                                <autos-list></autos-list>
                             </div>
                             <div slot="page2">
                                 <!-- Выбор услуги -->
-                                <div class="row">
-                                    <div class="col-sm-12 clearfix">
-                                        <input type="text" class="search" placeholder="выберите машину"/>
-                                    </div>
-                                </div>
+                                <services-list></services-list>
                             </div>
                             <div slot="page3">
                                 <!-- Выбор мастера -->
-                                <div class="row">
-                                    <div class="col-sm-12 clearfix">
-                                        <input type="text" class="search" placeholder="выберите машину"/>
-                                    </div>
-                                </div>
+                                <masters-list></masters-list>
                             </div>
                             <div slot="page4">
                                 <!-- Выбор даты завершения работ -->
@@ -61,7 +48,16 @@
 </template>
 
 <script>
+    import AutosList from './partials/autos/AutosList';
+    import ServicesList from './partials/services/ServicesList';
+    import MastersList from './partials/masters/MastersList';
+
     export default {
+        components: {
+            autosList: AutosList,
+            servicesList: ServicesList,
+            mastersList: MastersList
+        },
 
         created() {
 

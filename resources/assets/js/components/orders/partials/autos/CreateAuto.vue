@@ -53,7 +53,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" @click="create">Создать</button>
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">Закрыть</button>
+                        <button type="button" class="btn btn-warning" @click="closeModal">Закрыть</button>
                     </div>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                 get() { return this.$store.state.auto.autos},
                 set(value) { return this.$store.state.auto.autos = value }
             },
-            singleMaster: {
+            singleAuto: {
                 get() { return this.$store.state.auto.singleAuto },
                 set(value) { return this.$store.state.auto.singleAuto = value }
             }
@@ -89,6 +89,10 @@
                     this.$store.dispatch('getAllAutos');
                     $('#createAutoModal').modal('hide');
                 }).catch(function (error) {});
+            },
+
+            closeModal() {
+                $('#createAutoModal').modal('hide');
             }
         }
 

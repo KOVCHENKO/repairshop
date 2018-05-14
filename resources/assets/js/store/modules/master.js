@@ -4,8 +4,11 @@ const state = {
         id: 0,
         name: '',
         position: '',
-        rate: 0
-    }
+        rate: 0,
+    },
+
+    chosenMasters: [],
+    laborHours: 1
 };
 
 const mutations = {

@@ -4,7 +4,11 @@ const state = {
         id: 0,
         name: '',
         description: '',
-    }
+    },
+
+    chosenServices: []
+
+
 };
 
 const mutations = {
