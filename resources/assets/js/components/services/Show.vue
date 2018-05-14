@@ -2,11 +2,13 @@
     <div>
         <datatable-customized
                 :columns="table.columns"
-                :data="masters"
+                :data="services"
         ></datatable-customized>
 
-        <create-master></create-master>
-        <single-master></single-master>
+        <create-service></create-service>
+        <single-service></single-service>
+        <spares-list></spares-list>
+
     </div>
 </template>
 
@@ -14,6 +16,7 @@
     import ActionsService from './partials/ActionsService';
     import CreateService from './CreateService';
     import SingleService from './SingleService';
+    import SparesList from './partials/SparesList';
 
     export default {
         created() {
@@ -28,7 +31,8 @@
 
         components: {
             createService: CreateService,
-            singleService: SingleService
+            singleService: SingleService,
+            sparesList: SparesList
         },
 
         computed: {
@@ -49,6 +53,7 @@
                         {label: 'id', field: 'id'},
                         {label: 'Наименование', field: 'name'},
                         {label: 'Описание', field: 'description'},
+                        {label: 'Наценка (руб.)', field: 'cost'},
                         {label: '', component: 'actions-service'}
                     ]
                 },

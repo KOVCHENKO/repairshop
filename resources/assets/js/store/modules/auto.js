@@ -1,9 +1,14 @@
 const state = {
-    services: [],
-    singleService: {
+    autos: [],
+    singleAuto: {
         id: 0,
-        name: '',
-        description: '',
+        brand: '',
+        vin: '',
+        reg_number: '',
+        year: '',
+        volume: 0,
+        transmission: '',
+        image: ''
     }
 };
 

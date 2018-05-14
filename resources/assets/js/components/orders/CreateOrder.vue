@@ -2,7 +2,7 @@
 <template>
     <div>
         <!-- Modal - Create cabinet -->
-        <div class="modal fade bs-example-modal-lg" id="createClaimWizardModal" tabindex="-1" role="dialog" aria-labelledby="createClaimWizardModalLabel">
+        <div class="modal fade bs-example-modal-lg" id="createOrderModal" tabindex="-1" role="dialog" aria-labelledby="createOrderModalLabel">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-body">

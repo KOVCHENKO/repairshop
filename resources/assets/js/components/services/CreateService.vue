@@ -21,6 +21,12 @@
                                 <input type="text" name="Описание" v-model="singleService.description" placeholder="Описание"/>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-sm-4 clearfix"><label class="input-title">Наценка:</label></div>
+                            <div class="col-sm-8 clearfix">
+                                <input type="number" name="Наценка" v-model="singleService.cost" placeholder="Наценка"/>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="modal-footer">

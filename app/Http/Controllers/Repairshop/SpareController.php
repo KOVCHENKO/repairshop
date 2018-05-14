@@ -39,4 +39,23 @@ class SpareController extends Controller
     {
         return $this->spareRepository->delete($id);
     }
+
+    public function addSpareToService($spareId, $serviceId, $quantity)
+    {
+        $result = $this->spareRepository->addSpareToService($spareId, $serviceId, $quantity);
+
+        return [
+            'result' => $result
+        ];
+    }
+
+    public function getSparesOfService($serviceId)
+    {
+        return $this->spareRepository->getSparesOfService($serviceId);
+    }
+
+    public function deleteSparesFromService($spareServiceId)
+    {
+        return $this->spareRepository->deleteSparesFromService($spareServiceId);
+    }
 }

@@ -10,6 +10,8 @@ class Auto extends Model
     protected $table = 'autos';
 
     protected $fillable = [
+        'id',
+        'brand',
         'vin',
         'reg_number',
         'year',

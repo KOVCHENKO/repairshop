@@ -4,6 +4,7 @@ namespace App\src\Repositories;
 
 
 use App\src\Models\Spare;
+use Illuminate\Support\Facades\DB;
 
 class SpareRepository
 {
@@ -46,5 +47,28 @@ class SpareRepository
         $spare->delete();
 
         return $id;
+    }
+
+    public function addSpareToService($spareId, $serviceId, $quantity)
+    {
+        return DB::table('services_spares')->insert([
+            'spare_id' => $spareId,
+            'service_id' => $serviceId,
+            'quantity' => $quantity
+        ]);
+    }
+
+    public function getSparesOfService($serviceId)
+    {
+        return DB::table('services_spares')
+            ->join('spares', 'services_spares.spare_id', '=', 'spares.id')
+            ->select('spares.name', 'services_spares.quantity', 'services_spares.id', 'spares.unit')
+            ->where('services_spares.service_id', $serviceId)
+            ->get();
+    }
+
+    public function deleteSparesFromService($spareServiceId)
+    {
+        return DB::table('services_spares')->where('id', $spareServiceId)->delete();
     }
 }

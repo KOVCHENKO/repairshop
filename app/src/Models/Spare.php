@@ -13,6 +13,7 @@ class Spare extends Model
         'id',
         'name',
         'cost',
-        'quantity'
+        'quantity',
+        'unit'
     ];
 }

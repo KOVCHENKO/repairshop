@@ -14,11 +14,13 @@ class Service extends Model
     protected $table = 'services';
 
     protected $fillable = [
-        'vin',
-        'reg_number',
-        'year',
-        'volume',
-        'transmission',
-        'image'
+        'name',
+        'description',
+        'cost'
     ];
+
+    public function spares()
+    {
+        return $this->belongsToMany(Spare::class, 'subsystems_authorities');
+    }
 }

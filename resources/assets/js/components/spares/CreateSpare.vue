@@ -27,6 +27,15 @@
                                 <input type="text" name="Количество" v-model="singleSpare.quantity" placeholder="Кол-во"/>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-sm-4 clearfix"><label class="input-title">Ед.изм</label></div>
+                            <div class="col-sm-8 clearfix"><select name="type" v-model="singleSpare.unit" class="form-control">
+                                <option value="л">л</option>
+                                <option value="кг">кг</option>
+                                <option value="шт">шт</option>
+                            </select>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="modal-footer">

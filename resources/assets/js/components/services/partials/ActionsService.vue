@@ -8,6 +8,7 @@
         methods: {
             show() {
                 this.$store.dispatch('getSingleService', { service_id: this.row.id });
+                this.$store.dispatch('getAllSparesForService', { service_id: this.row.id })
             },
 
             remove() {

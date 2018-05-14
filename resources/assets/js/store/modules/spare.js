@@ -4,8 +4,13 @@ const state = {
         id: 0,
         name: '',
         cost: '',
-        quantity: 0
-    }
+        quantity: 0,
+        unit: ''
+    },
+
+    sparesQuantity: 1,
+
+    sparesOfService: []
 };
 
 const mutations = {
@@ -19,7 +24,14 @@ const mutations = {
         axios.get('/spare/get_by_id/' + data.spare_id).then(response => {
             state.singleSpare = response.data;
         }).catch(function (error) {});
+    },
+
+    getAllSparesForService: (state, data) => {
+        axios.get('/spare/get_spares_of_service/' + data.service_id).then(response => {
+            state.sparesOfService = response.data;
+        }).catch(function (error) {});
     }
+
 };
 
 const actions = {
@@ -29,6 +41,10 @@ const actions = {
 
     getSingleSpare: (context, payload) => {
         context.commit('getSingleSpare', payload)
+    },
+
+    getAllSparesForService: (context, payload) => {
+        context.commit('getAllSparesForService', payload)
     }
 };
 

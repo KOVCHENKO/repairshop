@@ -29,6 +29,11 @@ Route::post('/spare/update', 'Repairshop\SpareController@update');
 Route::get('/spare/get_by_id/{id}', 'Repairshop\SpareController@getById');
 Route::get('/spare/delete/{id}', 'Repairshop\SpareController@delete');
 
+Route::get('/spare/add_to_service/{spare_id}/{service_id}/{quantity}', 'Repairshop\SpareController@addSpareToService');
+Route::get('/spare/get_spares_of_service/{service_id}', 'Repairshop\SpareController@getSparesOfService');
+Route::get('/spare/delete_spares_from_service/{service_spare_id}', 'Repairshop\SpareController@deleteSparesFromService');
+
+
 /* Маршруты управления заказами */
 Route::get('/order/get_all', 'Repairshop\OrderController@getAll');
 Route::post('/order/create', 'Repairshop\OrderController@create');
@@ -42,3 +47,10 @@ Route::post('/service/create', 'Repairshop\ServiceController@create');
 Route::post('/service/update', 'Repairshop\ServiceController@update');
 Route::get('/service/get_by_id/{id}', 'Repairshop\ServiceController@getById');
 Route::get('/service/delete/{id}', 'Repairshop\ServiceController@delete');
+
+/* Маршруты управления автомобилями */
+Route::get('/auto/get_all', 'Repairshop\AutoController@getAll');
+Route::post('/auto/create', 'Repairshop\AutoController@create');
+Route::post('/auto/update', 'Repairshop\AutoController@update');
+Route::get('/auto/get_by_id/{id}', 'Repairshop\AutoController@getById');
+Route::get('/auto/delete/{id}', 'Repairshop\AutoController@delete');

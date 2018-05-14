@@ -50,6 +50,7 @@
                         {label: 'Наименование', field: 'name'},
                         {label: 'Стоимость', field: 'cost'},
                         {label: 'Количество', field: 'quantity'},
+                        {label: 'Ед.изм', field: 'unit'},
                         {label: '', component: 'actions-spare'}
                     ]
                 },

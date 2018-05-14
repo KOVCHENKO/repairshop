@@ -22,7 +22,10 @@ class ServiceController extends Controller
 
     public function create(Request $request)
     {
-        $this->serviceRepository->create($request->singleService);
+        $result = $this->serviceRepository->create($request->singleService);
+        return [
+            'result' => $result
+        ];
     }
 
     public function update(Request $request)
