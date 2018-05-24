@@ -21,7 +21,6 @@ class AutoRepository
 
     public function create($singleAuto)
     {
-        $singleAuto['image'] = 'dummy';
         return $this->auto->create($singleAuto);
     }
 

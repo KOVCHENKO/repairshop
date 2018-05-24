@@ -19,6 +19,7 @@
         created() {
             this.$store.dispatch('getAllOrders');
 
+
             this.$store.state.managerSetting.subTitle = 'Заказы';
             this.$store.state.managerSetting.buttonAddDisabled = false;
             this.$store.state.managerSetting.buttonAddTitle = 'Добавить заказ';
@@ -65,7 +66,7 @@
                 this.$store.state.wizardCurrentStep = 0;
 
 
-                    this.$store.state.auto.chosenAuto.id = 0;
+                this.$store.state.auto.chosenAuto.id = 0;
                 this.$store.state.auto.chosenAuto.brand = '';
                 this.$store.state.auto.chosenAuto.vin = '';
                 this.$store.state.auto.chosenAuto.reg_number = '';
@@ -74,6 +75,10 @@
                 this.$store.state.auto.chosenAuto.transmission = '';
             }
 
+        },
+
+        mounted() {
+            $('#createOrderModal').modal('show');
         }
 
 

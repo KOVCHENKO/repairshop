@@ -37,6 +37,14 @@
                                 <!-- Сформированный заказ -->
                                 <div class="row">
                                     <div class="col-sm-4 clearfix">
+                                        <label class="input-title"><strong>Рассчетная стоимость:</strong></label>
+                                    </div>
+                                    <div class="col-sm-8 clearfix">
+                                        <label class="input-title"><h4>{{ this.estimation }} рублей</h4></label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4 clearfix">
                                         <label class="input-title"><strong>Автомобиль:</strong></label>
                                     </div>
                                     <div class="col-sm-8 clearfix">
@@ -127,6 +135,7 @@
                 ],
 
                 state: state,
+                estimation: 0
             }
         },
 
@@ -140,8 +149,14 @@
         methods: {
 
             nextClicked(currentPage) {
-                if(currentPage === 6) {
+                if(currentPage === 4) {
+                    console.log("estimation");
+                    this.estimate();
+                }
 
+                if(currentPage === 5) {
+                    console.log("creation");
+                    this.estimate();
                 }
 
                 return true; //return false if you want to prevent moving to next page
@@ -150,6 +165,25 @@
             backClicked(currentPage) {
                 return true; //return false if you want to prevent moving to previous page
             },
+
+            estimate() {
+                axios.post('/order/estimate', {
+                    singleOrder: this.singleOrder,
+                    // chosenAuto: this.$store.state.auto.chosenAuto,
+                    chosenServices: this.$store.state.service.chosenServices,
+                    chosenMasters: this.$store.state.master.chosenMasters,
+                    // chosenCustomer: this.$store.state.chosenCustomer
+
+
+                }).then(response => {
+                    this.estimation = response.data;
+                }).catch(function (error) {});
+            },
+
+            create() {
+
+            }
+
         }
     }
 </script>

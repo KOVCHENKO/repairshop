@@ -5,9 +5,14 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="singleAutoModalLabel">Изменить автомобиль</h4>
+                        <h4 class="modal-title" id="singleAutoModalLabel">Информация об авто</h4>
                     </div>
                     <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12 clearfix">
+                                <img class="avatar" :src="'public/images/autos/' + singleAuto.image"/>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-sm-4 clearfix"><label class="input-title">Марка:</label></div>
                             <div class="col-sm-8 clearfix">

@@ -10,10 +10,12 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-sm-12 clearfix">
-                                <div title="изображение" class="avatar"
-                                     :style="'background:url(\'' + singleAuto.image + '\')'" @click="fileInputClick">
-                                    <transition name="slide-opacity"><i class="fa fa-pencil"></i></transition>
-                                </div>
+                                <img class="avatar" :src="'public/images/autos/' + singleAuto.image" @click="fileInputClick"/>
+
+                                <!--<div title="изображение" class="avatar"-->
+                                     <!--:style="'background:url(\'' + singleAuto.image + '\')'" @click="fileInputClick">-->
+                                    <!--<transition name="slide-opacity"><i class="fa fa-pencil"></i></transition>-->
+                                <!--</div>-->
                                 <!--<a v-if="avatar != '/public/images/' + gender + '.png'" href="#" class="delete-avatar-button" @click.prevent="deleteAvatar">Удалить изображение</a>-->
                                 <input type="file" name="file" class="form-input avatar-input" id="avatar" @change="uploadFile"/>
                             </div>
@@ -117,7 +119,7 @@
                 this.validation= { status:	"", error: "" };
 
                 axios.post(url, data, config).then((response) => {
-                    this.singleAuto.image = response.data.result;
+                    this.singleAuto.image = response.data.fileName;
                 });
             },
 

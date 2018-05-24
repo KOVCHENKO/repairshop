@@ -49,7 +49,7 @@
                         {label: 'Марка', field: 'brand'},
                         {label: 'Vin', field: 'vin'},
                         {label: 'Рег.номер', field: 'reg_number'},
-                        {label: '', component: 'actions-auto-to-order'}
+                        {label: '', component: 'actions-auto'}
                     ]
                 },
             }

@@ -21,6 +21,6 @@ class Service extends Model
 
     public function spares()
     {
-        return $this->belongsToMany(Spare::class, 'subsystems_authorities');
+        return $this->belongsToMany(Spare::class, 'services_spares')->withPivot('quantity as service_quantity');
     }
 }

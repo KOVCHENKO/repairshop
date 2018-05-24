@@ -10,7 +10,7 @@
 			<span class="sub-title">{{ $store.state.studentSetting.subTitle }}</span>
 
 			<button class="right" title="Выход" @click="logout"><i class="fa fa-sign-out"></i></button>
-			<router-link to="/orders/show" tag="button" class="right" title="Заказы"><i class="fa fa-building"></i></router-link>
+			<router-link to="/manager/menu" tag="button" class="right" title="основное меню"><i class="fa fa-level-up"></i></router-link>
 		</div>
 
     </div>

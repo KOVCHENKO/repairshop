@@ -59,6 +59,7 @@ class AutoController extends Controller
 
         return [
             'result' => $destinationPath.'/'.$fileName,
+            'fileName' => $fileName,
             'status' => 'success'
         ];
     }

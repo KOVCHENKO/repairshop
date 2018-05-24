@@ -40,6 +40,7 @@ Route::post('/order/create', 'Repairshop\OrderController@create');
 Route::post('/order/update', 'Repairshop\OrderController@update');
 Route::get('/order/get_by_id/{id}', 'Repairshop\OrderController@getById');
 Route::get('/order/delete/{id}', 'Repairshop\OrderController@delete');
+Route::post('/order/estimate/', 'Repairshop\OrderController@estimate');
 
 /* Маршруты управления услугами */
 Route::get('/service/get_all', 'Repairshop\ServiceController@getAll');

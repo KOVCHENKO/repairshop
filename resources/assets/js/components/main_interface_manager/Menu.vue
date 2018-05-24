@@ -6,7 +6,7 @@
                 <button class="cabinet-item"
                         @click="selectMenuItem('/orders/show')">
                         <img :src="'public/images/cabinets/2.png'"/>
-                        <label class="cabinet-title">Заказы</label>
+                        <label class="cabinet-title">Создать заказ</label>
                 </button>
             </span>
 
@@ -42,6 +42,10 @@
         methods: {
             selectMenuItem(route) {
                 this.$router.push(route);
+
+                if(route === '/orders/show') {
+                    $('#createOrderModal').modal('show');
+                }
             }
         },
 
