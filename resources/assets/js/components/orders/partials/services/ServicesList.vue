@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="row">
-            <div class="col-sm-4 clearfix"><label class="input-title">Используемые запчасти:</label></div>
+            <div class="col-sm-4 clearfix"><label class="input-title">Используемые услуги:</label></div>
             <div class="col-sm-8 clearfix">
                 <p v-for="singleChosenService in chosenServices">
                     {{ singleChosenService.name }},

@@ -8,12 +8,12 @@
                 ></datatable-customized>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-4 clearfix"><label class="input-title">Новая клиент:</label></div>
-            <div class="col-sm-8 clearfix">
-                <button type="button" class="btn btn-primary" @click="addCustomer">Добавить</button>
-            </div>
-        </div>
+        <!--<div class="row">-->
+            <!--<div class="col-sm-4 clearfix"><label class="input-title">Новая клиент:</label></div>-->
+            <!--<div class="col-sm-8 clearfix">-->
+                <!--<button type="button" class="btn btn-primary" @click="addCustomer">Добавить</button>-->
+            <!--</div>-->
+        <!--</div>-->
         <div class="row">
             <div class="col-sm-4 clearfix">
                 <label class="input-title">Выбранный клиент:</label>
@@ -52,7 +52,7 @@
             },
             singleCustomer: {
                 get() { return this.$store.state.customer.singleCustomer },
-                set(value) { return this.$store.state.customer.singleCustomer = value }
+                set(value) { return thisuploadImage.$store.state.customer.singleCustomer = value }
             },
             chosenCustomer: {
                 get() { return this.$store.state.customer.chosenCustomer },

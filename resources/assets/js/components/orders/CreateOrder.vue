@@ -6,7 +6,7 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <vue-good-wizard
+                        <order-wizard
                                 :steps="steps"
                                 :onNext="nextClicked"
                                 :onBack="backClicked">
@@ -35,9 +35,50 @@
                             </div>
                             <div slot="page6">
                                 <!-- Сформированный заказ -->
-                                <p>Сформированный и созданный заказ</p>
+                                <div class="row">
+                                    <div class="col-sm-4 clearfix">
+                                        <label class="input-title"><strong>Автомобиль:</strong></label>
+                                    </div>
+                                    <div class="col-sm-8 clearfix">
+                                        <label class="input-title">{{ this.$store.state.auto.chosenAuto.reg_number }}</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4 clearfix">
+                                        <label class="input-title"><strong>Используемые услуги:</strong></label>
+                                    </div>
+                                    <div class="col-sm-8 clearfix">
+                                        <p v-for="singleChosenService in $store.state.service.chosenServices">
+                                            {{ singleChosenService.name }},
+                                            {{ singleChosenService.description }}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4 clearfix">
+                                        <label class="input-title"><strong>Мастера:</strong></label>
+                                    </div>
+                                    <div class="col-sm-8 clearfix">
+                                        <p v-for="singleChosenMaster in $store.state.master.chosenMasters">
+                                            Имя: {{ singleChosenMaster.name }},
+                                            Должность: {{ singleChosenMaster.position }},
+                                            Задействованные часы: {{ singleChosenMaster.laborHours }}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4 clearfix">
+                                        <label class="input-title"><strong>Выполнить до:</strong></label>
+                                    </div>
+                                    <div class="col-sm-8 clearfix">
+                                        <label class="input-title">{{ state.date }}</label>
+                                    </div>
+                                </div>
                             </div>
-                        </vue-good-wizard>
+                        </order-wizard>
                     </div>
                 </div>
             </div>
@@ -53,6 +94,8 @@
     import ServicesList from './partials/services/ServicesList';
     import MastersList from './partials/masters/MastersList';
     import DatePicker from 'vuejs-datepicker';
+    import Wizard from '../main_interface_manager/Wizard';
+
 
     let state = {
         date: new Date(2016, 9,  16)
@@ -65,6 +108,7 @@
             servicesList: ServicesList,
             mastersList: MastersList,
             'datepicker': DatePicker,
+            orderWizard: Wizard
         },
 
         created() {

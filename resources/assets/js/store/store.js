@@ -48,6 +48,8 @@ export const store = new Vuex.Store({
             }
         },
 
+        wizardCurrentStep: 0,
+
     },
 
     modules: {

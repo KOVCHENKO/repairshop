@@ -59,7 +59,7 @@
         methods: {
             createOption() {
                 this.singleAdmin.name = '';
-                this.singleAdmin.login = 0;
+                this.singleAdmin.login = '';
                 this.singleAdmin.password = '';
             }
 

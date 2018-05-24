@@ -62,6 +62,16 @@
                 this.singleOrder.name = '';
                 this.singleOrder.auto = '';
                 this.singleOrder.completion_date = '';
+                this.$store.state.wizardCurrentStep = 0;
+
+
+                    this.$store.state.auto.chosenAuto.id = 0;
+                this.$store.state.auto.chosenAuto.brand = '';
+                this.$store.state.auto.chosenAuto.vin = '';
+                this.$store.state.auto.chosenAuto.reg_number = '';
+                this.$store.state.auto.chosenAuto.year = '';
+                this.$store.state.auto.chosenAuto.volume = 0;
+                this.$store.state.auto.chosenAuto.transmission = '';
             }
 
         }

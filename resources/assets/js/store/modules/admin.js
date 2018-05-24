@@ -3,7 +3,7 @@ const state = {
     singleAdmin: {
         id: 0,
         login: '',
-        password:0,
+        password:'',
         role: 'admin'
     }
 };

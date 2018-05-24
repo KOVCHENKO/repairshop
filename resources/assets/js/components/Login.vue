@@ -53,10 +53,10 @@
                         break;
                         /* TODO: проверка на то, есть ли у пользователя привязанный класс и школа. Если нет. То компонент с заполнением */
                     case 'admin':
-                        self.$router.push('/order/show');
+                        self.$router.push('/manager/menu');
                         break;
                     case 'superadmin':
-                        self.$router.push('/admins/show');
+                        self.$router.push('/admins/menu');
                         break;
                 }
             }

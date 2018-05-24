@@ -595,3 +595,47 @@ button {
     background: $dark-blue;
     color: $white;
 }
+
+
+/* Профиль */
+    .avatar {
+        width: 150px;
+        height: 150px;
+        margin: 0 0 20px;
+        border: 1px solid $black;
+        position: relative;
+        cursor: pointer;
+
+        i {
+            color: $blue;
+            font-size: 20px;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            padding: 1px 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -12px 0 0 -12px;
+            cursor: pointer;
+            display: none;
+
+            &:hover {
+                color: $dark-blue;
+            }
+        }
+
+        &:hover {
+            i {
+                display: block;
+            }
+        }
+    }
+    .avatar-input {
+        display: none;
+    }
+    .delete-avatar-button {
+        position: relative;
+        left: 10px;
+        top: -10px;
+    }

@@ -8,12 +8,12 @@
                 ></datatable-customized>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-4 clearfix"><label class="input-title">Новая машина:</label></div>
-            <div class="col-sm-8 clearfix">
-                <button type="button" class="btn btn-primary" @click="addAuto">Добавить</button>
-            </div>
-        </div>
+        <!--<div class="row">-->
+            <!--<div class="col-sm-4 clearfix"><label class="input-title">Новая машина:</label></div>-->
+            <!--<div class="col-sm-8 clearfix">-->
+                <!--<button type="button" class="btn btn-primary" @click="addAuto">Добавить</button>-->
+            <!--</div>-->
+        <!--</div>-->
         <div class="row">
             <div class="col-sm-4 clearfix">
                 <label class="input-title">Выбранная машина:</label>

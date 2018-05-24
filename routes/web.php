@@ -55,6 +55,9 @@ Route::post('/auto/update', 'Repairshop\AutoController@update');
 Route::get('/auto/get_by_id/{id}', 'Repairshop\AutoController@getById');
 Route::get('/auto/delete/{id}', 'Repairshop\AutoController@delete');
 
+Route::post('/auto/upload', 'Repairshop\AutoController@uploadImage');
+
+
 /* Маршруты управления Клиентами */
 Route::get('/customer/get_all', 'Users\CustomerController@getAll');
 Route::post('/customer/create', 'Users\CustomerController@create');

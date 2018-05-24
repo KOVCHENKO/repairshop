@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
  * Bootstrap v4.1.1 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
@@ -10249,6 +10250,49 @@ button.circular {
 .pagination li a.active {
   background: #004f8e;
   color: #fcfcfe;
+}
+
+/* Профиль */
+.avatar {
+  width: 150px;
+  height: 150px;
+  margin: 0 0 20px;
+  border: 1px solid #1a181c;
+  position: relative;
+  cursor: pointer;
+}
+
+.avatar i {
+  color: #0063b1;
+  font-size: 20px;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  padding: 1px 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -12px 0 0 -12px;
+  cursor: pointer;
+  display: none;
+}
+
+.avatar i:hover {
+  color: #004f8e;
+}
+
+.avatar:hover i {
+  display: block;
+}
+
+.avatar-input {
+  display: none;
+}
+
+.delete-avatar-button {
+  position: relative;
+  left: 10px;
+  top: -10px;
 }
 
 body, html {

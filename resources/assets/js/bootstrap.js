@@ -18,8 +18,8 @@ import Notifications from 'vue-notification';
 Vue.use(Notifications);
 
 /* Vue good wiard - мастер действий */
-import VueGoodWizard from 'vue-good-wizard';
-Vue.use(VueGoodWizard);
+// import VueGoodWizard from './components/main_interface_manager/Wizard';
+// Vue.use(VueGoodWizard);
 
 window._ = require('lodash');
 window.Popper = require('popper.js').default;
