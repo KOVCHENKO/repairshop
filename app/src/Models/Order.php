@@ -15,6 +15,7 @@ class Order extends Model
         'completion_date',
         'manager_id',
         'customer_id',
-        'auto_id'
+        'auto_id',
+        'total_cost'
     ];
 }

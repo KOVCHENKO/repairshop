@@ -4,6 +4,7 @@ namespace App\src\Repositories;
 
 
 use App\src\Models\Service;
+use Illuminate\Support\Facades\DB;
 
 class ServiceRepository
 {
@@ -41,6 +42,16 @@ class ServiceRepository
     public function getByIdWithSpares($id)
     {
         return $this->service->with('spares')->where('id', $id)->first();
+    }
+
+    public function bindServiceToOrder($singleChosenService, $orderId)
+    {
+        DB::table('orders_services')->insert([
+            'order_id' => $orderId,
+            'service_id' => $singleChosenService['id']
+        ]);
+
+        return true;
     }
 
 }

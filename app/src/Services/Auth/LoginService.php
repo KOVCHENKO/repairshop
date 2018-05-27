@@ -29,6 +29,8 @@ class LoginService
 
         $this->generateToken($user);
 
+        Session::put('user_id', $user->id);
+
         return [
             'role' => $user->role
         ];

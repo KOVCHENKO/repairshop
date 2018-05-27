@@ -29,7 +29,7 @@ class OrderController extends Controller
 
     public function create(Request $request)
     {
-        $this->orderService->saveAllOrdersInformation($request->singleOrder);
+        $this->orderService->saveAllOrdersInformation($request);
     }
 
     public function update(Request $request)

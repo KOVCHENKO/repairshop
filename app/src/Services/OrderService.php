@@ -3,15 +3,27 @@
 namespace App\src\Services;
 
 
+use App\src\Models\Order;
+use App\src\Repositories\MasterRepository;
+use App\src\Repositories\OrderRepository;
 use App\src\Repositories\ServiceRepository;
+use DateTime;
+use Illuminate\Support\Facades\Session;
+use PhpParser\Node\Expr\Cast\Object_;
 
 class OrderService
 {
     protected $serviceRepository;
+    protected $orderRepository;
+    protected $masterRepository;
 
-    public function __construct(ServiceRepository $serviceRepository)
+    public function __construct(ServiceRepository $serviceRepository,
+                                OrderRepository $orderRepository,
+                                MasterRepository $masterRepository)
     {
         $this->serviceRepository = $serviceRepository;
+        $this->orderRepository = $orderRepository;
+        $this->masterRepository = $masterRepository;
     }
 
     /**
@@ -27,7 +39,11 @@ class OrderService
 
     public function saveAllOrdersInformation($data)
     {
+        $orderId = $this->collectUserInformation($data);
 
+        $this->storeOrderMasters($data->chosenMasters, $orderId);
+        $this->storeOrderServices($data->chosenServices, $orderId);
+        return $orderId;
     }
 
     private function calculateServicesCost($chosenServices)
@@ -56,5 +72,37 @@ class OrderService
         }
 
         return $mastersCost;
+    }
+
+    private function collectUserInformation($data)
+    {
+        $dt = new DateTime($data->singleOrder['completion_date']);
+        $dt->format('Y-m-d');
+
+        $singleOrder = new Order();
+        $singleOrder->total_cost = $data->totalCost;
+        $singleOrder->name = 'Заказ №1';
+        $singleOrder->completion_date = $dt;
+        $singleOrder->manager_id = Session::get('user_id');
+        $singleOrder->customer_id = $data->chosenCustomer['id'];
+        $singleOrder->auto_id = $data->chosenAuto['id'];
+
+        return $this->orderRepository->create($singleOrder);
+
+    }
+
+    private function storeOrderMasters($chosenMasters, $orderId)
+    {
+        foreach ($chosenMasters as $singleChosenMaster) {
+            $this->masterRepository->bindMasterToOrder($singleChosenMaster, $orderId);
+        }
+
+    }
+
+    private function storeOrderServices($chosenServices, $orderId)
+    {
+        foreach ($chosenServices as $singleChosenService) {
+            $this->serviceRepository->bindServiceToOrder($singleChosenService, $orderId);
+        }
     }
 }

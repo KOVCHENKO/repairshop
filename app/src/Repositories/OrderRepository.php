@@ -3,8 +3,16 @@
 namespace App\src\Repositories;
 
 
+use App\src\Models\Order;
+
 class OrderRepository
 {
+    protected $order;
+
+    public function __construct(Order $order)
+    {
+        $this->order = $order;
+    }
 
     public function getAll()
     {
@@ -13,11 +21,14 @@ class OrderRepository
 
     public function create($singleOrder)
     {
-        return '';
+        $singleOrder->save();
+        return $singleOrder->id;
     }
 
-    public function updateOrder($singleOrder)
+    public function updateOrder($singleOrder, $totalCost)
     {
+
+
         return '';
     }
 

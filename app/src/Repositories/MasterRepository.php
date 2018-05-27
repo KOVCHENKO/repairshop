@@ -4,6 +4,7 @@ namespace App\src\Repositories;
 
 
 use App\src\Models\Master;
+use Illuminate\Support\Facades\DB;
 
 class MasterRepository
 {
@@ -46,6 +47,16 @@ class MasterRepository
         $master->delete();
 
         return $id;
+    }
+
+    public function bindMasterToOrder($singleChosenMaster, $orderId)
+    {
+        DB::table('orders_masters')->insert([
+            'order_id' => $orderId,
+            'master_id' => $singleChosenMaster['id']
+        ]);
+
+        return true;
     }
 
 

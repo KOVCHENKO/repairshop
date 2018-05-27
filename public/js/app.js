@@ -62634,7 +62634,7 @@ var state = {
 
             if (currentPage === 5) {
                 console.log("creation");
-                this.estimate();
+                this.create();
             }
 
             return true; //return false if you want to prevent moving to next page
@@ -62657,7 +62657,18 @@ var state = {
                 _this.estimation = response.data;
             }).catch(function (error) {});
         },
-        create: function create() {}
+        create: function create() {
+            axios.post('/order/create', {
+                totalCost: this.estimation,
+                singleOrder: this.singleOrder,
+                chosenAuto: this.$store.state.auto.chosenAuto,
+                chosenServices: this.$store.state.service.chosenServices,
+                chosenMasters: this.$store.state.master.chosenMasters,
+                chosenCustomer: this.$store.state.customer.chosenCustomer
+            }).then(function (response) {
+                console.log('Order has been create');
+            }).catch(function (error) {});
+        }
     }
 });
 
