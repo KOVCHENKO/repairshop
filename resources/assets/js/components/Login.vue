@@ -1,5 +1,7 @@
 <template>
 <div>
+    <notifications></notifications>
+
     <div class="welcome">
 
         <div id="user-form">
@@ -41,7 +43,15 @@
                     login: this.user_login,
                     password: this.user_password
                 }).then(function (response) {
+                    console.log(response.data);
                     self.chooseUserForLogin(response.data);
+                }).catch(function (error) {
+                    console.log("wrong login-password")
+                    self.$notify({
+                        title: 'Сообщение',
+                        text: 'Неправильный логин/пароль',
+                        type: 'warning'
+                    });
                 });
             },
 

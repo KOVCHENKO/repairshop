@@ -51,4 +51,9 @@ class OrderController extends Controller
     {
         return $this->orderService->estimate($request);
     }
+
+    public function changeStatus($orderId)
+    {
+        return $this->orderService->changeStatus($orderId);
+    }
 }

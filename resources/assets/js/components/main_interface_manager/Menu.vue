@@ -33,6 +33,9 @@
 <script>
 
     export default {
+        created() {
+            this.$store.state.managerSetting.buttonAddDisabled = true;
+        },
 
         data() {
             return {

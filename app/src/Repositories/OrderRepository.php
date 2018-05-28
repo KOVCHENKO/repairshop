@@ -4,6 +4,7 @@ namespace App\src\Repositories;
 
 
 use App\src\Models\Order;
+use Illuminate\Support\Facades\Session;
 
 class OrderRepository
 {
@@ -16,7 +17,11 @@ class OrderRepository
 
     public function getAll()
     {
-        return '';
+        return $this->order
+            ->with('auto')
+            ->with('customer')
+            ->where('manager_id', Session::get('user_id'))
+            ->get();
     }
 
     public function create($singleOrder)
@@ -34,11 +39,26 @@ class OrderRepository
 
     public function getById($id)
     {
-        return '';
+        return $this->order->where('id', $id)
+            ->with('auto')
+            ->with('customer')
+            ->with('masters')
+            ->with('services')
+            ->first();
+
     }
 
     public function delete($id)
     {
         return '';
+    }
+
+    public function changeName($orderId)
+    {
+        $order = $this->order->find($orderId);
+        $order->name = 'Заказ №'.$orderId;
+        $order->save();
+
+        return true;
     }
 }

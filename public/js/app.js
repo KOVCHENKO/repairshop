@@ -56939,6 +56939,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -56965,7 +56967,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 login: this.user_login,
                 password: this.user_password
             }).then(function (response) {
+                console.log(response.data);
                 self.chooseUserForLogin(response.data);
+            }).catch(function (error) {
+                console.log("wrong login-password");
+                self.$notify({
+                    title: 'Сообщение',
+                    text: 'Неправильный логин/пароль',
+                    type: 'warning'
+                });
             });
         },
         chooseUserForLogin: function chooseUserForLogin(loginData) {
@@ -56995,81 +57005,87 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "welcome" }, [
-      _c("div", { attrs: { id: "user-form" } }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.user_login,
-              expression: "user_login"
-            },
-            {
-              name: "validate",
-              rawName: "v-validate",
-              value: "required|email",
-              expression: "'required|email'"
-            }
-          ],
-          attrs: { type: "text", name: "логин", placeholder: "Логин" },
-          domProps: { value: _vm.user_login },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+  return _c(
+    "div",
+    [
+      _c("notifications"),
+      _vm._v(" "),
+      _c("div", { staticClass: "welcome" }, [
+        _c("div", { attrs: { id: "user-form" } }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.user_login,
+                expression: "user_login"
+              },
+              {
+                name: "validate",
+                rawName: "v-validate",
+                value: "required|email",
+                expression: "'required|email'"
               }
-              _vm.user_login = $event.target.value
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.user_password,
-              expression: "user_password"
-            },
-            {
-              name: "validate",
-              rawName: "v-validate",
-              value: "required",
-              expression: "'required'"
-            }
-          ],
-          attrs: { type: "password", name: "пароль", placeholder: "Пароль" },
-          domProps: { value: _vm.user_password },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+            ],
+            attrs: { type: "text", name: "логин", placeholder: "Логин" },
+            domProps: { value: _vm.user_login },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.user_login = $event.target.value
               }
-              _vm.user_password = $event.target.value
             }
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "main-button btn-primary",
-            attrs: { type: "button" },
-            on: { click: _vm.login }
-          },
-          [_vm._v("\n                Войти\n            ")]
-        ),
-        _vm._v(" "),
-        _vm.validation.invalid_message_visibility
-          ? _c("span", { staticClass: "validation-error" }, [
-              _vm._v(_vm._s(_vm.validation.invalid_message))
-            ])
-          : _vm._e()
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.user_password,
+                expression: "user_password"
+              },
+              {
+                name: "validate",
+                rawName: "v-validate",
+                value: "required",
+                expression: "'required'"
+              }
+            ],
+            attrs: { type: "password", name: "пароль", placeholder: "Пароль" },
+            domProps: { value: _vm.user_password },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.user_password = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "main-button btn-primary",
+              attrs: { type: "button" },
+              on: { click: _vm.login }
+            },
+            [_vm._v("\n                Войти\n            ")]
+          ),
+          _vm._v(" "),
+          _vm.validation.invalid_message_visibility
+            ? _c("span", { staticClass: "validation-error" }, [
+                _vm._v(_vm._s(_vm.validation.invalid_message))
+              ])
+            : _vm._e()
+        ])
       ])
-    ])
-  ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -62104,6 +62120,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    created: function created() {
+        this.$store.state.managerSetting.buttonAddDisabled = true;
+    },
     data: function data() {
         return {};
     },
@@ -62283,6 +62302,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     created: function created() {
         this.$store.dispatch('getAllOrders');
+        this.createOption();
 
         this.$store.state.managerSetting.subTitle = 'Заказы';
         this.$store.state.managerSetting.buttonAddDisabled = false;
@@ -62319,7 +62339,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             table: {
-                columns: [{ label: 'id', field: 'id' }, { label: 'Наименование', field: 'name' }, { label: 'Автомобиль', field: 'auto' }, { label: 'Дата завершения', field: 'completion_date' }, { label: '', component: 'actions-order' }]
+                columns: [{ label: 'id', field: 'id' }, { label: 'Наименование', field: 'name' }, { label: 'Рег. номер авто', field: 'auto.reg_number' }, { label: 'Имя клиента', field: 'customer.name' }, { label: 'Дата завершения', field: 'completion_date' }, { label: 'Статус', field: 'status' }, { label: '', component: 'actions-order' }]
             }
         };
     },
@@ -62403,7 +62423,7 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = (Vue.component('actions-order', {
-    template: '<div class="actions">\n                <button class="btn btn-primary" data-toggle="modal" @click="show" data-target="#singleOrderModal">\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C</button>\n                <button class="btn btn-warning" @click="remove">\u0423\u0434\u0430\u043B\u0438\u0442\u044C</button>\n               </div>',
+    template: '<div class="actions">\n                <button class="btn btn-primary" data-toggle="modal" @click="show" data-target="#singleOrderModal">\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C</button>\n                <button class="btn btn-warning" @click="changeStatus">\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u0441\u0442\u0430\u0442\u0443\u0441</button>\n               </div>',
     props: ['row'],
     methods: {
         show: function show() {
@@ -62414,6 +62434,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.get('/order/delete/' + this.row.id).then(function (response) {
                 _this.$store.dispatch('getAllOrders');
+            }).catch(function (error) {});
+        },
+        changeStatus: function changeStatus() {
+            var _this2 = this;
+
+            axios.get('/order/change_status/' + this.row.id).then(function (response) {
+                _this2.$store.dispatch('getAllOrders');
             }).catch(function (error) {});
         }
     }
@@ -62647,17 +62674,15 @@ var state = {
 
             axios.post('/order/estimate', {
                 singleOrder: this.singleOrder,
-                // chosenAuto: this.$store.state.auto.chosenAuto,
                 chosenServices: this.$store.state.service.chosenServices,
                 chosenMasters: this.$store.state.master.chosenMasters
-                // chosenCustomer: this.$store.state.chosenCustomer
-
-
             }).then(function (response) {
                 _this.estimation = response.data;
             }).catch(function (error) {});
         },
         create: function create() {
+            var _this2 = this;
+
             axios.post('/order/create', {
                 totalCost: this.estimation,
                 singleOrder: this.singleOrder,
@@ -62666,6 +62691,9 @@ var state = {
                 chosenMasters: this.$store.state.master.chosenMasters,
                 chosenCustomer: this.$store.state.customer.chosenCustomer
             }).then(function (response) {
+                _this2.$store.dispatch('getAllOrders');
+                $('#createOrderModal').modal('hide');
+
                 console.log('Order has been create');
             }).catch(function (error) {});
         }
@@ -64040,7 +64068,21 @@ Vue.component('actions-services-to-order', {
     props: ['row'],
     methods: {
         choose: function choose() {
-            this.$store.state.service.chosenServices.push(this.row);
+            var _this = this;
+
+            var self = this;
+            /* Проверка - возможно ли добавить запчасти к "услуге" */
+            axios.get('/spare/check_if_available_at_store/' + this.row.id).then(function (response) {
+                if (response.data.result === true) {
+                    _this.$store.state.service.chosenServices.push(_this.row);
+                } else {
+                    self.$notify({
+                        title: 'Сообщение',
+                        text: 'Нет необходимого количества запчастей на складе',
+                        type: 'warning'
+                    });
+                }
+            }).catch(function (error) {});
         }
     }
 });
@@ -66355,6 +66397,59 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -66363,14 +66458,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
     computed: {
-        orders: {
-            get: function get() {
-                return this.$store.state.order.orders;
-            },
-            set: function set(value) {
-                return this.$store.state.order.orders = value;
-            }
-        },
         singleOrder: {
             get: function get() {
                 return this.$store.state.order.singleOrder;
@@ -66382,16 +66469,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        update: function update() {
-            var _this = this;
-
-            axios.post('/order/update', {
-                singleOrder: this.singleOrder
-            }).then(function (response) {
-                _this.$store.dispatch('getAllOrders');
-                $('#singleOrderModal').modal('hide');
-            }).catch(function (error) {});
-        }
+        exportToPdf: function exportToPdf() {}
     }
 
 });
@@ -66429,30 +66507,83 @@ var render = function() {
                   _vm._m(1),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-sm-8 clearfix" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.singleOrder.name,
-                          expression: "singleOrder.name"
-                        }
-                      ],
-                      attrs: {
-                        type: "text",
-                        name: "Наименование",
-                        placeholder: "Наименование"
-                      },
-                      domProps: { value: _vm.singleOrder.name },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.singleOrder, "name", $event.target.value)
-                        }
-                      }
+                    _c("label", { staticClass: "input-title" }, [
+                      _c("h4", [
+                        _vm._v(_vm._s(this.singleOrder.total_cost) + " рублей")
+                      ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-8 clearfix" }, [
+                    _c("label", { staticClass: "input-title" }, [
+                      _vm._v(_vm._s(this.singleOrder.auto.reg_number))
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("hr"),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-sm-8 clearfix" },
+                    _vm._l(this.singleOrder.services, function(
+                      singleChosenService
+                    ) {
+                      return _c("p", [
+                        _vm._v(
+                          "\n                                    " +
+                            _vm._s(singleChosenService.name) +
+                            ",\n                                    " +
+                            _vm._s(singleChosenService.description) +
+                            "\n                                "
+                        )
+                      ])
                     })
+                  )
+                ]),
+                _vm._v(" "),
+                _c("hr"),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _vm._m(4),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-sm-8 clearfix" },
+                    _vm._l(this.singleOrder.masters, function(
+                      singleChosenMaster
+                    ) {
+                      return _c("p", [
+                        _vm._v(
+                          "\n                                    Имя: " +
+                            _vm._s(singleChosenMaster.name) +
+                            ",\n                                    Должность: " +
+                            _vm._s(singleChosenMaster.position) +
+                            ",\n                                    Задействованные часы: " +
+                            _vm._s(singleChosenMaster.laborHours) +
+                            "\n                                "
+                        )
+                      ])
+                    })
+                  )
+                ]),
+                _vm._v(" "),
+                _c("hr"),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _vm._m(5),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-8 clearfix" }, [
+                    _c("label", { staticClass: "input-title" }, [
+                      _vm._v(_vm._s(this.singleOrder.completion_date))
+                    ])
                   ])
                 ])
               ]),
@@ -66463,9 +66594,9 @@ var render = function() {
                   {
                     staticClass: "btn btn-primary",
                     attrs: { type: "button" },
-                    on: { click: _vm.update }
+                    on: { click: _vm.exportToPdf }
                   },
-                  [_vm._v("Изменить")]
+                  [_vm._v("экспорт в PDF")]
                 ),
                 _vm._v(" "),
                 _c(
@@ -66493,7 +66624,7 @@ var staticRenderFns = [
       _c(
         "h4",
         { staticClass: "modal-title", attrs: { id: "singleOrderModalLabel" } },
-        [_vm._v("Изменить данные заказа")]
+        [_vm._v("Данные заказа")]
       )
     ])
   },
@@ -66502,7 +66633,49 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-sm-4 clearfix" }, [
-      _c("label", { staticClass: "input-title" }, [_vm._v("Наименование:")])
+      _c("label", { staticClass: "input-title" }, [
+        _c("strong", [_vm._v("Стоимость заказа:")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-4 clearfix" }, [
+      _c("label", { staticClass: "input-title" }, [
+        _c("strong", [_vm._v("Автомобиль:")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-4 clearfix" }, [
+      _c("label", { staticClass: "input-title" }, [
+        _c("strong", [_vm._v("Используемые услуги:")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-4 clearfix" }, [
+      _c("label", { staticClass: "input-title" }, [
+        _c("strong", [_vm._v("Мастера:")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-4 clearfix" }, [
+      _c("label", { staticClass: "input-title" }, [
+        _c("strong", [_vm._v("Выполнить до:")])
+      ])
     ])
   }
 ]
@@ -69038,8 +69211,11 @@ var state = {
     singleOrder: {
         id: 0,
         name: '',
-        auto: '',
-        completion_date: 0
+        auto: {},
+        completion_date: 0,
+        customer: {},
+        masters: [],
+        services: []
     }
 };
 

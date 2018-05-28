@@ -24,7 +24,7 @@ class LoginService
         try {
             $user = $this->userRepository->getUserByLoginAndPassword($data->login, $data->password);
         } catch (\Exception $ex){
-            return response($ex->getMessage(),500);
+            return response($ex->getMessage(),404);
         }
 
         $this->generateToken($user);

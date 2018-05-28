@@ -18,7 +18,7 @@
     export default {
         created() {
             this.$store.dispatch('getAllOrders');
-
+            this.createOption();
 
             this.$store.state.managerSetting.subTitle = 'Заказы';
             this.$store.state.managerSetting.buttonAddDisabled = false;
@@ -49,8 +49,10 @@
                     columns: [
                         {label: 'id', field: 'id'},
                         {label: 'Наименование', field: 'name'},
-                        {label: 'Автомобиль', field: 'auto'},
+                        {label: 'Рег. номер авто', field: 'auto.reg_number'},
+                        {label: 'Имя клиента', field: 'customer.name'},
                         {label: 'Дата завершения', field: 'completion_date'},
+                        {label: 'Статус', field: 'status'},
                         {label: '', component: 'actions-order'}
                     ]
                 },

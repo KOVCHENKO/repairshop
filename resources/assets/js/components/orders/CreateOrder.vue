@@ -169,12 +169,8 @@
             estimate() {
                 axios.post('/order/estimate', {
                     singleOrder: this.singleOrder,
-                    // chosenAuto: this.$store.state.auto.chosenAuto,
                     chosenServices: this.$store.state.service.chosenServices,
                     chosenMasters: this.$store.state.master.chosenMasters,
-                    // chosenCustomer: this.$store.state.chosenCustomer
-
-
                 }).then(response => {
                     this.estimation = response.data;
                 }).catch(function (error) {});
@@ -189,6 +185,9 @@
                     chosenMasters: this.$store.state.master.chosenMasters,
                     chosenCustomer: this.$store.state.customer.chosenCustomer
                 }).then(response => {
+                    this.$store.dispatch('getAllOrders');
+                    $('#createOrderModal').modal('hide');
+
                     console.log('Order has been create')
                 }).catch(function (error) {});
             }

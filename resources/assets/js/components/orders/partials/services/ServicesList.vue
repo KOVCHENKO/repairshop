@@ -27,7 +27,19 @@
         props: ['row'],
         methods: {
             choose() {
-                this.$store.state.service.chosenServices.push(this.row);
+                let self = this;
+                /* Проверка - возможно ли добавить запчасти к "услуге" */
+                axios.get('/spare/check_if_available_at_store/' + this.row.id).then(response => {
+                    if (response.data.result === true) {
+                        this.$store.state.service.chosenServices.push(this.row);
+                    } else {
+                        self.$notify({
+                            title: 'Сообщение',
+                            text: 'Нет необходимого количества запчастей на складе',
+                            type: 'warning'
+                        });
+                    }
+                }).catch(function (error) {});
             },
         }
     });

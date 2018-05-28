@@ -3,16 +3,19 @@
 namespace App\Http\Controllers\Repairshop;
 
 use App\src\Repositories\SpareRepository;
+use App\src\Services\SpareService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class SpareController extends Controller
 {
     protected $spareRepository;
+    protected $spareService;
 
-    public function __construct(SpareRepository $spareRepository)
+    public function __construct(SpareRepository $spareRepository, SpareService $spareService)
     {
         $this->spareRepository = $spareRepository;
+        $this->spareService = $spareService;
     }
 
     public function getAll()
@@ -57,5 +60,14 @@ class SpareController extends Controller
     public function deleteSparesFromService($spareServiceId)
     {
         return $this->spareRepository->deleteSparesFromService($spareServiceId);
+    }
+
+    public function checkAvailabilityAtStore($serviceId)
+    {
+        $result = $this->spareService->checkAvailabilityAtStore($serviceId);
+
+        return [
+            'result' => $result
+        ];
     }
 }

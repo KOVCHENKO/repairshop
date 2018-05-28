@@ -53,7 +53,8 @@ class MasterRepository
     {
         DB::table('orders_masters')->insert([
             'order_id' => $orderId,
-            'master_id' => $singleChosenMaster['id']
+            'master_id' => $singleChosenMaster['id'],
+            'labor_hours' => $singleChosenMaster['laborHours']
         ]);
 
         return true;

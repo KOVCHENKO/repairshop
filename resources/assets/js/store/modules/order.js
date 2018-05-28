@@ -3,8 +3,11 @@ const state = {
     singleOrder: {
         id: 0,
         name: '',
-        auto: '',
-        completion_date: 0
+        auto: {},
+        completion_date: 0,
+        customer: {},
+        masters: [],
+        services: []
     }
 };
 

@@ -43,6 +43,9 @@ class OrderService
 
         $this->storeOrderMasters($data->chosenMasters, $orderId);
         $this->storeOrderServices($data->chosenServices, $orderId);
+
+        $this->orderRepository->changeName($orderId);
+
         return $orderId;
     }
 
@@ -54,7 +57,7 @@ class OrderService
             $serviceWithSpares = $this->serviceRepository->getByIdWithSpares($singleChosenService['id']);
 
             $sparesCost = 0;
-            foreach($serviceWithSpares['spares'] as $singleSpare) {
+            foreach ($serviceWithSpares['spares'] as $singleSpare) {
                 $sparesCost = $sparesCost + (int)$singleSpare->cost * (int)$singleSpare->service_quantity;
             }
 
@@ -86,6 +89,7 @@ class OrderService
         $singleOrder->manager_id = Session::get('user_id');
         $singleOrder->customer_id = $data->chosenCustomer['id'];
         $singleOrder->auto_id = $data->chosenAuto['id'];
+        $singleOrder->status = 'Создан';
 
         return $this->orderRepository->create($singleOrder);
 
@@ -103,6 +107,41 @@ class OrderService
     {
         foreach ($chosenServices as $singleChosenService) {
             $this->serviceRepository->bindServiceToOrder($singleChosenService, $orderId);
+
+            /* Вычислить кол-во неободимых запчастей и удалить их со склада */
+            $this->minusSpareParts($singleChosenService);
         }
     }
+
+    public function changeStatus($orderId)
+    {
+        $order = $this->orderRepository->getById($orderId);
+
+        if ($order->status == 'Создан') {
+            $order->status = 'Завершен';
+        } else {
+            $order->status = 'Создан';
+        }
+
+        $order->save();
+
+        return $order->status;
+    }
+
+    /**
+     * @param $singleChosenService
+     * Отнять зап части со склада
+     */
+    private function minusSpareParts($singleChosenService)
+    {
+        $singleService = $this->serviceRepository->getByIdWithSpares($singleChosenService['id']);
+
+        foreach ($singleService->spares as $singleSpare) {
+            $singleSpare->quantity = $singleSpare->quantity - $singleSpare->service_quantity;
+            $singleSpare->save();
+        }
+
+        return true;
+    }
+
 }
