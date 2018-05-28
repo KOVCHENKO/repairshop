@@ -56,4 +56,9 @@ class OrderController extends Controller
     {
         return $this->orderService->changeStatus($orderId);
     }
+
+    public function exportToPdf($orderId)
+    {
+        return $this->orderService->exportToPdf($orderId);
+    }
 }

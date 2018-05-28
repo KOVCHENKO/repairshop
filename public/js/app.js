@@ -66469,7 +66469,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        exportToPdf: function exportToPdf() {}
+        exportToPdf: function exportToPdf() {
+            window.open(window.location.origin + '/order/export_to_pdf/' + this.singleOrder.id);
+
+            // axios.post('/order/export_to_pdf', {
+            //     singleOrder: this.singleOrder
+            // }).then(response => {
+            //     this.$notify({
+            //         title: 'Сообщение',
+            //         text: 'Экспорт в pdf завершен',
+            //         type: 'warning'
+            //     });
+            // }).catch(function (error) {});
+        }
     }
 
 });

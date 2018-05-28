@@ -16,14 +16,17 @@ class OrderService
     protected $serviceRepository;
     protected $orderRepository;
     protected $masterRepository;
+    protected $exportService;
 
     public function __construct(ServiceRepository $serviceRepository,
                                 OrderRepository $orderRepository,
-                                MasterRepository $masterRepository)
+                                MasterRepository $masterRepository,
+                                ExportService $exportService)
     {
         $this->serviceRepository = $serviceRepository;
         $this->orderRepository = $orderRepository;
         $this->masterRepository = $masterRepository;
+        $this->exportService = $exportService;
     }
 
     /**
@@ -142,6 +145,11 @@ class OrderService
         }
 
         return true;
+    }
+
+    public function exportToPdf($orderId)
+    {
+       return $this->exportService->exportToPdf($orderId);
     }
 
 }

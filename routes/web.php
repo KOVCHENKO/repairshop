@@ -43,6 +43,7 @@ Route::get('/order/get_by_id/{id}', 'Repairshop\OrderController@getById');
 Route::get('/order/delete/{id}', 'Repairshop\OrderController@delete');
 Route::post('/order/estimate/', 'Repairshop\OrderController@estimate');
 Route::get('/order/change_status/{id}', 'Repairshop\OrderController@changeStatus');
+Route::get('/order/export_to_pdf/{order_id}', 'Repairshop\OrderController@exportToPdf');
 
 /* Маршруты управления услугами */
 Route::get('/service/get_all', 'Repairshop\ServiceController@getAll');
