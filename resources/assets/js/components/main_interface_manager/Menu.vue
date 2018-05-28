@@ -14,7 +14,7 @@
         <h2 class="first">Дополнительно</h2>
         <span>
                 <button class="cabinet-item"
-                        @click="selectMenuItem('/orders/show')">
+                        @click="selectMenuItem('/customers/show')">
                         <img :src="'public/images/cabinets/5.png'"/>
                         <label class="cabinet-title">Клиенты</label>
                 </button>

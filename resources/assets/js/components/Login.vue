@@ -68,6 +68,9 @@
                     case 'superadmin':
                         self.$router.push('/admins/menu');
                         break;
+                    case 'customer':
+                        self.$router.push('/customers/orders');
+                        break;
                 }
             }
         }

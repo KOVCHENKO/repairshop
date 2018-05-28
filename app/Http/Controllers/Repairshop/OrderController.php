@@ -27,6 +27,11 @@ class OrderController extends Controller
         return $this->orderRepository->getAll();
     }
 
+    public function getAllCustomer()
+    {
+        return $this->orderRepository->getAllCustomer();
+    }
+
     public function create(Request $request)
     {
         $this->orderService->saveAllOrdersInformation($request);

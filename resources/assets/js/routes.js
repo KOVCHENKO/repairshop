@@ -21,10 +21,15 @@ let routes = [
     {
         path: '/desktop', component: require('./components/main_interface_manager/Desktop.vue'),
         children: [
-            {path: '/manager/menu', component: require('./components/main_interface_manager/Menu.vue')},   // Основное меню
-            {path: '/orders/show', component: require('./components/orders/Show.vue')},                    // Заказы ремонтной мастерской
+            {path: '/manager/menu', component: require('./components/main_interface_manager/Menu.vue')},  // Основное меню
+            {path: '/orders/show', component: require('./components/orders/Show.vue')},                   // Заказы ремонтной мастерской
             {path: '/autos/show', component: require('./components/autos/Show.vue')},                     // Автомобили ремонтной мастерской
+            {path: '/customers/show', component: require('./components/customers/Show.vue')},                 // Клиенты в ремонтной мастерской
         ]
+    },
+
+    {
+        path: '/customers/orders', component: require('./components/orders_of_customer/Show.vue'),
     }
 
 

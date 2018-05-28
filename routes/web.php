@@ -37,6 +37,7 @@ Route::get('/spare/check_if_available_at_store/{service_id}', 'Repairshop\SpareC
 
 /* Маршруты управления заказами */
 Route::get('/order/get_all', 'Repairshop\OrderController@getAll');
+Route::get('/order/get_all_customer', 'Repairshop\OrderController@getAllCustomer');
 Route::post('/order/create', 'Repairshop\OrderController@create');
 Route::post('/order/update', 'Repairshop\OrderController@update');
 Route::get('/order/get_by_id/{id}', 'Repairshop\OrderController@getById');

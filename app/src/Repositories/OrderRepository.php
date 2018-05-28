@@ -61,4 +61,13 @@ class OrderRepository
 
         return true;
     }
+
+    public function getAllCustomer()
+    {
+        return $this->order
+            ->with('auto')
+            ->with('customer')
+            ->where('customer_id', Session::get('user_id'))
+            ->get();
+    }
 }
