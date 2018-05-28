@@ -72,6 +72,12 @@
                 axios.post('/spare/create', {
                     singleSpare: this.singleSpare
                 }).then(response => {
+                    this.$notify({
+                        title: 'Информация',
+                        text: 'Новая запчасть - добавлена в систему',
+                        type: 'warning'
+                    });
+
                     this.$store.dispatch('getAllSpares');
                     $('#createSpareModal').modal('hide');
                 }).catch(function (error) {});

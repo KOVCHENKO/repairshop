@@ -26,6 +26,16 @@ class AutoRepository
 
     public function updateAuto($singleAuto)
     {
+        $auto = $this->auto->find($singleAuto['id']);
+        $auto->reg_number = $singleAuto['reg_number'];
+        $auto->year = $singleAuto['year'];
+        $auto->volume = $singleAuto['volume'];
+        $auto->transmission = $singleAuto['transmission'];
+        $auto->image = $singleAuto['image'];
+        $auto->brand = $singleAuto['brand'];
+        $auto->save();
+
+        return $this->auto;
     }
 
     public function getById($id)
@@ -35,7 +45,10 @@ class AutoRepository
 
     public function delete($id)
     {
+        $auto = $this->auto->find($id);
+        $auto->delete();
 
+        return $id;
     }
 
 

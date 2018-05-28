@@ -87,6 +87,12 @@
                 axios.post('/service/update', {
                     singleService: this.singleService
                 }).then(response => {
+                    this.$notify({
+                        title: 'Информация',
+                        text: 'Информация об услуге - обновлена',
+                        type: 'warning'
+                    });
+
                     this.$store.dispatch('getAllServices');
                     $('#singleServiceModal').modal('hide');
                 }).catch(function (error) {});

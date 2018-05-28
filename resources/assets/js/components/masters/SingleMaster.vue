@@ -63,6 +63,12 @@
                 axios.post('/master/update', {
                     singleMaster: this.singleMaster
                 }).then(response => {
+                    this.$notify({
+                        title: 'Информация',
+                        text: 'Информация о мастере - обновлена',
+                        type: 'warning'
+                    });
+
                     this.$store.dispatch('getAllMasters');
                     $('#singleMasterModal').modal('hide');
                 }).catch(function (error) {});

@@ -25,31 +25,31 @@
                         <div class="row">
                             <div class="col-sm-4 clearfix"><label class="input-title">Марка:</label></div>
                             <div class="col-sm-8 clearfix">
-                                <input type="text" name="Наименование" v-model="singleAuto.brand" placeholder="Марка"/>
+                                <input type="text" name="Наименование" v-model="singleAuto.brand" placeholder="Lada"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4 clearfix"><label class="input-title">Vin:</label></div>
                             <div class="col-sm-8 clearfix">
-                                <input type="text" name="vin" v-model="singleAuto.vin" placeholder="vin"/>
+                                <input type="text" name="vin" v-model="singleAuto.vin" placeholder="AA0AA000A0A0000000"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4 clearfix"><label class="input-title">Регистрационный номер:</label></div>
                             <div class="col-sm-8 clearfix">
-                                <input type="text" name="reg_number" v-model="singleAuto.reg_number" placeholder="Рег.номер"/>
+                                <input type="text" name="reg_number" v-model="singleAuto.reg_number" placeholder="a000aa00rus"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4 clearfix"><label class="input-title">Год выпуска:</label></div>
                             <div class="col-sm-8 clearfix">
-                                <input type="text" name="year" v-model="singleAuto.year" placeholder="Год"/>
+                                <input type="text" name="year" v-model="singleAuto.year" placeholder="2000"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4 clearfix"><label class="input-title">Объем:</label></div>
                             <div class="col-sm-8 clearfix">
-                                <input type="text" name="year" v-model="singleAuto.volume" placeholder="Объем"/>
+                                <input type="text" name="year" v-model="singleAuto.volume" placeholder="1.0"/>
                             </div>
                         </div>
                         <div class="row">
@@ -99,6 +99,12 @@
                 axios.post('/auto/create', {
                     singleAuto: this.singleAuto
                 }).then(response => {
+                    this.$notify({
+                        title: 'Информация',
+                        text: 'Был добавлен новый автомобиль',
+                        type: 'warning'
+                    });
+
                     this.$store.dispatch('getAllAutos');
                     $('#createAutoModal').modal('hide');
                 }).catch(function (error) {});

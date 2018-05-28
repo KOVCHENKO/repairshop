@@ -63,6 +63,12 @@
                 axios.post('/service/create', {
                     singleService: this.singleService
                 }).then(response => {
+                    this.$notify({
+                        title: 'Информация',
+                        text: 'Новый вид услуги добавлен в систему',
+                        type: 'warning'
+                    });
+
                     this.$store.dispatch('getAllServices');
                     $('#createServiceModal').modal('hide');
                 }).catch(function (error) {});

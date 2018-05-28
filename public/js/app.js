@@ -57952,6 +57952,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post('/admin/create', {
                 singleAdmin: this.singleAdmin
             }).then(function (response) {
+                _this.$notify({
+                    title: 'Информация',
+                    text: 'Новый менеджер добавлен в систему',
+                    type: 'warning'
+                });
+
                 _this.$store.dispatch('getAllAdmins');
                 $('#createAdminModal').modal('hide');
             }).catch(function (error) {});
@@ -58292,6 +58298,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post('/admin/update', {
                 singleAdmin: this.singleAdmin
             }).then(function (response) {
+                _this.$notify({
+                    title: 'Информация',
+                    text: 'Информация о менеджере - обновлена',
+                    type: 'warning'
+                });
+
                 _this.$store.dispatch('getAllAdmins');
                 $('#singleAdminModal').modal('hide');
             }).catch(function (error) {});
@@ -58867,6 +58879,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post('/master/create', {
                 singleMaster: this.singleMaster
             }).then(function (response) {
+                _this.$notify({
+                    title: 'Информация',
+                    text: 'Новый мастер добавлен в систему',
+                    type: 'warning'
+                });
+
                 _this.$store.dispatch('getAllMasters');
                 $('#createMasterModal').modal('hide');
             }).catch(function (error) {});
@@ -59211,6 +59229,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post('/master/update', {
                 singleMaster: this.singleMaster
             }).then(function (response) {
+                _this.$notify({
+                    title: 'Информация',
+                    text: 'Информация о мастере - обновлена',
+                    type: 'warning'
+                });
+
                 _this.$store.dispatch('getAllMasters');
                 $('#singleMasterModal').modal('hide');
             }).catch(function (error) {});
@@ -59799,6 +59823,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post('/spare/create', {
                 singleSpare: this.singleSpare
             }).then(function (response) {
+                _this.$notify({
+                    title: 'Информация',
+                    text: 'Новая запчасть - добавлена в систему',
+                    type: 'warning'
+                });
+
                 _this.$store.dispatch('getAllSpares');
                 $('#createSpareModal').modal('hide');
             }).catch(function (error) {});
@@ -60193,6 +60223,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post('/spare/update', {
                 singleSpare: this.singleSpare
             }).then(function (response) {
+                _this.$notify({
+                    title: 'Информация',
+                    text: 'Информация о запчасти - обновлена',
+                    type: 'warning'
+                });
+
                 _this.$store.dispatch('getAllSpares');
                 $('#singleSpareModal').modal('hide');
             }).catch(function (error) {});
@@ -60772,6 +60808,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post('/service/create', {
                 singleService: this.singleService
             }).then(function (response) {
+                _this.$notify({
+                    title: 'Информация',
+                    text: 'Новый вид услуги добавлен в систему',
+                    type: 'warning'
+                });
+
                 _this.$store.dispatch('getAllServices');
                 $('#createServiceModal').modal('hide');
             }).catch(function (error) {});
@@ -61145,6 +61187,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post('/service/update', {
                 singleService: this.singleService
             }).then(function (response) {
+                _this.$notify({
+                    title: 'Информация',
+                    text: 'Информация об услуге - обновлена',
+                    type: 'warning'
+                });
+
                 _this.$store.dispatch('getAllServices');
                 $('#singleServiceModal').modal('hide');
             }).catch(function (error) {});
@@ -62691,6 +62739,12 @@ var state = {
                 chosenMasters: this.$store.state.master.chosenMasters,
                 chosenCustomer: this.$store.state.customer.chosenCustomer
             }).then(function (response) {
+                _this2.$notify({
+                    title: 'Информация',
+                    text: 'Создан новый заказ',
+                    type: 'warning'
+                });
+
                 _this2.$store.dispatch('getAllOrders');
                 $('#createOrderModal').modal('hide');
 
@@ -66934,8 +66988,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         remove: function remove() {
             var _this = this;
 
-            axios.get('/admin/delete/' + this.row.id).then(function (response) {
-                _this.$store.dispatch('getAllAdmins');
+            axios.get('/auto/delete/' + this.row.id).then(function (response) {
+                _this.$store.dispatch('getAllAutos');
             }).catch(function (error) {});
         }
     }
@@ -67106,6 +67160,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post('/auto/create', {
                 singleAuto: this.singleAuto
             }).then(function (response) {
+                _this.$notify({
+                    title: 'Информация',
+                    text: 'Был добавлен новый автомобиль',
+                    type: 'warning'
+                });
+
                 _this.$store.dispatch('getAllAutos');
                 $('#createAutoModal').modal('hide');
             }).catch(function (error) {});
@@ -67199,7 +67259,7 @@ var render = function() {
                       attrs: {
                         type: "text",
                         name: "Наименование",
-                        placeholder: "Марка"
+                        placeholder: "Lada"
                       },
                       domProps: { value: _vm.singleAuto.brand },
                       on: {
@@ -67227,7 +67287,11 @@ var render = function() {
                           expression: "singleAuto.vin"
                         }
                       ],
-                      attrs: { type: "text", name: "vin", placeholder: "vin" },
+                      attrs: {
+                        type: "text",
+                        name: "vin",
+                        placeholder: "AA0AA000A0A0000000"
+                      },
                       domProps: { value: _vm.singleAuto.vin },
                       on: {
                         input: function($event) {
@@ -67257,7 +67321,7 @@ var render = function() {
                       attrs: {
                         type: "text",
                         name: "reg_number",
-                        placeholder: "Рег.номер"
+                        placeholder: "a000aa00rus"
                       },
                       domProps: { value: _vm.singleAuto.reg_number },
                       on: {
@@ -67289,7 +67353,11 @@ var render = function() {
                           expression: "singleAuto.year"
                         }
                       ],
-                      attrs: { type: "text", name: "year", placeholder: "Год" },
+                      attrs: {
+                        type: "text",
+                        name: "year",
+                        placeholder: "2000"
+                      },
                       domProps: { value: _vm.singleAuto.year },
                       on: {
                         input: function($event) {
@@ -67316,11 +67384,7 @@ var render = function() {
                           expression: "singleAuto.volume"
                         }
                       ],
-                      attrs: {
-                        type: "text",
-                        name: "year",
-                        placeholder: "Объем"
-                      },
+                      attrs: { type: "text", name: "year", placeholder: "1.0" },
                       domProps: { value: _vm.singleAuto.volume },
                       on: {
                         input: function($event) {
@@ -67611,6 +67675,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -67641,15 +67706,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         update: function update() {
             var _this = this;
 
-            axios.post('/auto/create', {
+            axios.post('/auto/update', {
                 singleAuto: this.singleAuto
             }).then(function (response) {
+                _this.$notify({
+                    title: 'Информация',
+                    text: 'Информация об автомобиле была обновлена',
+                    type: 'warning'
+                });
+
                 _this.$store.dispatch('getAllAutos');
                 $('#createAutoModal').modal('hide');
             }).catch(function (error) {});
         },
         closeModal: function closeModal() {
             $('#singleAutoModal').modal('hide');
+        },
+        uploadFile: function uploadFile() {
+            var _this2 = this;
+
+            // uploadFile
+            var url = '/auto/upload';
+            var config = { headers: { 'content-type': 'multipart/form-data' } };
+
+            var data = new FormData();
+            data.append('file', document.getElementById('avatar').files[0]);
+
+            this.validation = { status: "", error: "" };
+
+            axios.post(url, data, config).then(function (response) {
+                _this2.singleAuto.image = response.data.fileName;
+            });
+        },
+        fileInputClick: function fileInputClick() {
+            $('#avatar').click();
         }
     }
 
@@ -67690,7 +67780,14 @@ var render = function() {
                       staticClass: "avatar",
                       attrs: {
                         src: "public/images/autos/" + _vm.singleAuto.image
-                      }
+                      },
+                      on: { click: _vm.fileInputClick }
+                    }),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-input avatar-input",
+                      attrs: { type: "file", name: "file", id: "avatar" },
+                      on: { change: _vm.uploadFile }
                     })
                   ])
                 ]),
@@ -67909,7 +68006,7 @@ var render = function() {
                     attrs: { type: "button" },
                     on: { click: _vm.update }
                   },
-                  [_vm._v("Создать")]
+                  [_vm._v("Сохранить")]
                 ),
                 _vm._v(" "),
                 _c(

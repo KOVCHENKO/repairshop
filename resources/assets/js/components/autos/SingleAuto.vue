@@ -10,7 +10,8 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-sm-12 clearfix">
-                                <img class="avatar" :src="'public/images/autos/' + singleAuto.image"/>
+                                <img class="avatar" :src="'public/images/autos/' + singleAuto.image" @click="fileInputClick"/>
+                                <input type="file" name="file" class="form-input avatar-input" id="avatar" @change="uploadFile"/>
                             </div>
                         </div>
                         <div class="row">
@@ -56,7 +57,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" @click="update">Создать</button>
+                        <button type="button" class="btn btn-primary" @click="update">Сохранить</button>
                         <button type="button" class="btn btn-warning" @click="closeModal">Закрыть</button>
                     </div>
                 </div>
@@ -87,9 +88,15 @@
 
         methods: {
             update() {
-                axios.post('/auto/create', {
+                axios.post('/auto/update', {
                     singleAuto: this.singleAuto
                 }).then(response => {
+                    this.$notify({
+                        title: 'Информация',
+                        text: 'Информация об автомобиле была обновлена',
+                        type: 'warning'
+                    });
+
                     this.$store.dispatch('getAllAutos');
                     $('#createAutoModal').modal('hide');
                 }).catch(function (error) {});
@@ -97,6 +104,25 @@
 
             closeModal() {
                 $('#singleAutoModal').modal('hide');
+            },
+
+            uploadFile() {
+                // uploadFile
+                let url = '/auto/upload';
+                const config = { headers: { 'content-type': 'multipart/form-data' } };
+
+                let data = new FormData();
+                data.append('file', document.getElementById('avatar').files[0]);
+
+                this.validation= { status:	"", error: "" };
+
+                axios.post(url, data, config).then((response) => {
+                    this.singleAuto.image = response.data.fileName;
+                });
+            },
+
+            fileInputClick() {
+                $('#avatar').click();
             }
         }
 

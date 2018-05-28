@@ -67,6 +67,12 @@
                 axios.post('/admin/create', {
                     singleAdmin: this.singleAdmin
                 }).then(response => {
+                    this.$notify({
+                        title: 'Информация',
+                        text: 'Новый менеджер добавлен в систему',
+                        type: 'warning'
+                    });
+
                     this.$store.dispatch('getAllAdmins');
                     $('#createAdminModal').modal('hide');
                 }).catch(function (error) {});

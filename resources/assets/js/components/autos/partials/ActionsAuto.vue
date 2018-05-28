@@ -11,8 +11,8 @@
             },
 
             remove() {
-                axios.get('/admin/delete/' + this.row.id).then(response => {
-                    this.$store.dispatch('getAllAdmins');
+                axios.get('/auto/delete/' + this.row.id).then(response => {
+                    this.$store.dispatch('getAllAutos');
                 }).catch(function (error) {});
             }
         }

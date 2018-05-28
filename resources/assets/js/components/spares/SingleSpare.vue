@@ -63,6 +63,12 @@
                 axios.post('/spare/update', {
                     singleSpare: this.singleSpare
                 }).then(response => {
+                    this.$notify({
+                        title: 'Информация',
+                        text: 'Информация о запчасти - обновлена',
+                        type: 'warning'
+                    });
+
                     this.$store.dispatch('getAllSpares');
                     $('#singleSpareModal').modal('hide');
                 }).catch(function (error) {});

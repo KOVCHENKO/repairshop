@@ -63,6 +63,12 @@
                 axios.post('/admin/update', {
                     singleAdmin: this.singleAdmin
                 }).then(response => {
+                    this.$notify({
+                        title: 'Информация',
+                        text: 'Информация о менеджере - обновлена',
+                        type: 'warning'
+                    });
+
                     this.$store.dispatch('getAllAdmins');
                     $('#singleAdminModal').modal('hide');
                 }).catch(function (error) {});

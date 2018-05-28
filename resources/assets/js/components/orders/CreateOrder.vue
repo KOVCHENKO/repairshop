@@ -185,6 +185,12 @@
                     chosenMasters: this.$store.state.master.chosenMasters,
                     chosenCustomer: this.$store.state.customer.chosenCustomer
                 }).then(response => {
+                    this.$notify({
+                        title: 'Информация',
+                        text: 'Создан новый заказ',
+                        type: 'warning'
+                    });
+
                     this.$store.dispatch('getAllOrders');
                     $('#createOrderModal').modal('hide');
 

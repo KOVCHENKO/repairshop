@@ -63,6 +63,12 @@
                 axios.post('/master/create', {
                     singleMaster: this.singleMaster
                 }).then(response => {
+                    this.$notify({
+                        title: 'Информация',
+                        text: 'Новый мастер добавлен в систему',
+                        type: 'warning'
+                    });
+
                     this.$store.dispatch('getAllMasters');
                     $('#createMasterModal').modal('hide');
                 }).catch(function (error) {});
