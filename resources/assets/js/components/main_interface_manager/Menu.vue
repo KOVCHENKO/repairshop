@@ -18,12 +18,19 @@
                         <img :src="'public/images/cabinets/5.png'"/>
                         <label class="cabinet-title">Клиенты</label>
                 </button>
-            </span>
+        </span>
         <span>
                 <button class="cabinet-item"
                         @click="selectMenuItem('/autos/show')">
                         <img :src="'public/images/cabinets/3.png'"/>
                         <label class="cabinet-title">Авто</label>
+                </button>
+        </span>
+        <span>
+                <button class="cabinet-item"
+                        @click="selectMenuItem('/orders/show/no_modal')">
+                        <img :src="'public/images/cabinets/2.png'"/>
+                        <label class="cabinet-title">Заказы</label>
                 </button>
         </span>
 

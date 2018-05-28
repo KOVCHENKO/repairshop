@@ -18,6 +18,12 @@ const mutations = {
         }).catch(function (error) {});
     },
 
+    getAllSuperAdminOrders: (state) => {
+        axios.get('/order/get_all_superadmin/').then(response => {
+            state.orders = response.data;
+        }).catch(function (error) {});
+    },
+
     getSingleOrder: (state, data) => {
         axios.get('/order/get_by_id/' + data.order_id).then(response => {
             state.singleOrder = response.data;
@@ -42,7 +48,11 @@ const actions = {
 
     getAllOrdersOfCustomer: (context) => {
         context.commit('getAllOrdersOfCustomer');
-    }
+    },
+
+    getAllSuperAdminOrders: (context) => {
+        context.commit('getAllSuperAdminOrders');
+    },
 };
 
 export default {

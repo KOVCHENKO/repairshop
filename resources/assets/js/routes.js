@@ -14,6 +14,8 @@ let routes = [
             {path: '/masters/show', component: require('./components/masters/Show.vue')},               // Мастера (техники) ремонтной мастерской
             {path: '/spares/show', component: require('./components/spares/Show.vue')},                 // Запчасти ремонтной мастерской
             {path: '/services/show', component: require('./components/services/Show.vue')},             // Услуги
+            {path: '/all_orders/show', component: require('./components/all_orders/Show.vue')},             // Заказы ремонтной мастерской
+
         ]
     },
 
@@ -25,6 +27,7 @@ let routes = [
             {path: '/orders/show', component: require('./components/orders/Show.vue')},                   // Заказы ремонтной мастерской
             {path: '/autos/show', component: require('./components/autos/Show.vue')},                     // Автомобили ремонтной мастерской
             {path: '/customers/show', component: require('./components/customers/Show.vue')},                 // Клиенты в ремонтной мастерской
+            {path: '/orders/show/:just_show', component: require('./components/orders/Show.vue')},                 // Клиенты в ремонтной мастерской
         ]
     },
 

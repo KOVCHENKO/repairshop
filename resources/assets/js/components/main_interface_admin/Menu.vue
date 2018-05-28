@@ -31,8 +31,13 @@
                         <label class="cabinet-title">Мастера</label>
                 </button>
             </span>
-
-
+            <span>
+                    <button class="cabinet-item"
+                            @click="selectMenuItem('/all_orders/show')">
+                            <img :src="'public/images/cabinets/2.png'"/>
+                            <label class="cabinet-title">Все заказы</label>
+                    </button>
+            </span>
 
         <!--</span>-->
 

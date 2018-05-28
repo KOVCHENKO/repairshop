@@ -5,22 +5,38 @@
                 :data="orders"
         ></datatable-customized>
 
-        <create-order></create-order>
         <single-order></single-order>
     </div>
 </template>
 
 <script>
-    import ActionsOrder from './partials/ActionsOrder';
-    import CreateOrder from './CreateOrder';
     import SingleOrder from './SingleOrder';
+
+    Vue.component('actions-order-for-superadmin', {
+        template: `<div class="actions">
+                    <button class="btn btn-primary" data-toggle="modal" @click="show" data-target="#singleOrderModal">Показать</button>
+                    <button class="btn btn-warning" @click="remove">Удалить</button>
+                   </div>`,
+        props: ['row'],
+        methods: {
+            show() {
+                this.$store.dispatch('getSingleOrder', { order_id: this.row.id });
+            },
+
+            remove() {
+                axios.get('/order/delete/' + this.row.id).then(response => {
+                    this.$store.dispatch('getAllSuperAdminOrders');
+                }).catch(function (error) {});
+            }
+        }
+    });
 
     export default {
         created() {
-            this.$store.dispatch('getAllOrders');
+            this.$store.dispatch('getAllSuperAdminOrders');
             this.createOption();
 
-            this.$store.state.managerSetting.subTitle = 'Заказы';
+            this.$store.state.managerSetting.subTitle = 'Все заказы';
             this.$store.state.managerSetting.buttonAddDisabled = false;
             this.$store.state.managerSetting.buttonAddTitle = 'Добавить заказ';
             this.$store.state.managerSetting.buttonAddAction = this.createOption;
@@ -28,7 +44,6 @@
         },
 
         components: {
-            createOrder: CreateOrder,
             singleOrder: SingleOrder
         },
 
@@ -53,7 +68,7 @@
                         {label: 'Имя клиента', field: 'customer.name'},
                         {label: 'Дата завершения', field: 'completion_date'},
                         {label: 'Статус', field: 'status'},
-                        {label: '', component: 'actions-order'}
+                        {label: '', component: 'actions-order-for-superadmin'}
                     ]
                 },
             }
@@ -61,28 +76,13 @@
 
         methods: {
             createOption() {
-                this.singleOrder.id = 0;
-                this.singleOrder.name = '';
-                this.singleOrder.auto = '';
-                this.singleOrder.completion_date = '';
-                this.$store.state.wizardCurrentStep = 0;
 
-
-                this.$store.state.auto.chosenAuto.id = 0;
-                this.$store.state.auto.chosenAuto.brand = '';
-                this.$store.state.auto.chosenAuto.vin = '';
-                this.$store.state.auto.chosenAuto.reg_number = '';
-                this.$store.state.auto.chosenAuto.year = '';
-                this.$store.state.auto.chosenAuto.volume = 0;
-                this.$store.state.auto.chosenAuto.transmission = '';
             }
 
         },
 
         mounted() {
-            if (this.$route.params.just_show !== 'no_modal') {
-                $('#createOrderModal').modal('show');
-            }
+            $('#createOrderModal').modal('show');
         }
 
 
