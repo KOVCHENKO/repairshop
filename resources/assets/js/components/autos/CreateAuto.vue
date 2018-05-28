@@ -25,31 +25,31 @@
                         <div class="row">
                             <div class="col-sm-4 clearfix"><label class="input-title">Марка:</label></div>
                             <div class="col-sm-8 clearfix">
-                                <input type="text" name="Наименование" v-model="singleAuto.brand" placeholder="Lada"/>
+                                <input type="text" name="brand" v-model="singleAuto.brand" placeholder="Lada" v-validate="'required|max:255'"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4 clearfix"><label class="input-title">Vin:</label></div>
                             <div class="col-sm-8 clearfix">
-                                <input type="text" name="vin" v-model="singleAuto.vin" placeholder="AA0AA000A0A0000000"/>
+                                <input type="text" name="vin" v-model="singleAuto.vin" placeholder="AA0AA000A0A0000000" v-validate="'required|max:255'"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4 clearfix"><label class="input-title">Регистрационный номер:</label></div>
                             <div class="col-sm-8 clearfix">
-                                <input type="text" name="reg_number" v-model="singleAuto.reg_number" placeholder="a000aa00rus"/>
+                                <input type="text" name="reg_number" v-model="singleAuto.reg_number" placeholder="a000aa00rus" v-validate="'required|max:255'"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4 clearfix"><label class="input-title">Год выпуска:</label></div>
                             <div class="col-sm-8 clearfix">
-                                <input type="text" name="year" v-model="singleAuto.year" placeholder="2000"/>
+                                <input type="text" name="year" v-model="singleAuto.year" placeholder="2000" v-validate="'required|max:255'"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4 clearfix"><label class="input-title">Объем:</label></div>
                             <div class="col-sm-8 clearfix">
-                                <input type="text" name="year" v-model="singleAuto.volume" placeholder="1.0"/>
+                                <input type="text" name="volume" v-model="singleAuto.volume" placeholder="1.0" v-validate="'required|max:255'"/>
                             </div>
                         </div>
                         <div class="row">
@@ -58,6 +58,15 @@
                                 <option value="автоматическая">автоматическая</option>
                                 <option value="механическая">механическая</option>
                             </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 clearfix">
+                                <p class="validation-error" v-show="errors.has('brand')">поле "марка" не заполнено или имеет неправильный формат</p>
+                                <p class="validation-error" v-show="errors.has('vin')">поле "vin" не заполнено или имеет неправильный формат</p>
+                                <p class="validation-error" v-show="errors.has('reg_number')">поле "номер авто" не заполнено или имеет неправильный формат</p>
+                                <p class="validation-error" v-show="errors.has('year')">поле "год" не заполнено или имеет неправильный формат</p>
+                                <p class="validation-error" v-show="errors.has('volume')">поле "объем" не заполнено или имеет неправильный формат</p>
                             </div>
                         </div>
 

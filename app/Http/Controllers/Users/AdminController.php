@@ -22,11 +22,23 @@ class AdminController extends Controller
 
     public function create(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'login' => 'required',
+            'password' => 'required',
+        ]);
+
         return $this->userRepository->createAdmin($request->singleAdmin);
     }
 
     public function update(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'login' => 'required',
+            'password' => 'required',
+        ]);
+
         return $this->userRepository->updateUser($request->singleAdmin);
     }
 

@@ -467,9 +467,9 @@ nav {
 
     .validation-error {
         display: block;
-        font-size: 16px;
+        font-size: 10px;
         padding: 20px 0;
-        text-align: center;
+        text-align: left;
         color: $red;
     }
 
@@ -1188,4 +1188,12 @@ footer {
             -moz-transform: rotate(360deg);
         }
     }
+}
+
+.validation-error {
+    display: block;
+    font-size: 12px;
+    padding: 0px 0;
+    text-align: left;
+    color: $red;
 }
