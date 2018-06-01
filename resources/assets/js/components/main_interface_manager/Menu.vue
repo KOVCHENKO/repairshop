@@ -33,13 +33,7 @@
                         <label class="cabinet-title">Заказы</label>
                 </button>
         </span>
-        <span>
-                <button class="cabinet-item"
-                        @click="selectMenuItem('/calendar/show')">
-                        <img :src="'public/images/cabinets/6.png'"/>
-                        <label class="cabinet-title">Календарь</label>
-                </button>
-        </span>
+
 
     </div>
 </template>
