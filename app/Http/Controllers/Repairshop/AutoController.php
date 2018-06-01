@@ -27,7 +27,6 @@ class AutoController extends Controller
     public function create(Request $request)
     {
         $request->validate([
-            'singleAuto.vin' => 'required',
             'singleAuto.reg_number' => 'required',
             'singleAuto.year' => 'required',
             'singleAuto.volume' => 'required',
@@ -41,7 +40,6 @@ class AutoController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'singleAuto.vin' => 'required',
             'singleAuto.reg_number' => 'required',
             'singleAuto.year' => 'required',
             'singleAuto.volume' => 'required',

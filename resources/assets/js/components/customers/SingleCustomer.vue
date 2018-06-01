@@ -20,6 +20,14 @@
                                 <input type="text" name="Логин" v-model="singleCustomer.login" placeholder="Логин"/>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-sm-4 clearfix"><label class="input-title">Телефон:</label></div>
+                            <div class="col-sm-8 clearfix">
+                                <input type="text" name="Телефон" v-model="singleCustomer.phone" placeholder="87778887788"/>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-sm-4 clearfix"><label class="input-title">Пароль:</label></div>
                             <div class="col-sm-8 clearfix">

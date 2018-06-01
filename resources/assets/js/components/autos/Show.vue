@@ -59,6 +59,9 @@
             createOption() {
                 this.singleAuto.id = 0;
                 this.singleAuto.vin = '';
+                this.singleAuto.pts = '';
+                this.singleAuto.frame = '';
+                this.singleAuto.mileage = '';
                 this.singleAuto.reg_number = '';
                 this.singleAuto.year = '';
                 this.singleAuto.volume = '';

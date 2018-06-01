@@ -33,6 +33,9 @@ class AutoRepository
         $auto->transmission = $singleAuto['transmission'];
         $auto->image = $singleAuto['image'];
         $auto->brand = $singleAuto['brand'];
+        $auto->pts = $singleAuto['pts'];
+        $auto->mileage = $singleAuto['mileage'];
+        $auto->frame = $singleAuto['frame'];
         $auto->save();
 
         return $this->auto;

@@ -26,6 +26,30 @@
                                 <input type="text" name="vin" v-model="singleAuto.vin" placeholder="vin"/>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-sm-4 clearfix"><label class="input-title">ПТС:</label></div>
+                            <div class="col-sm-8 clearfix">
+                                <input type="text" name="pts" v-model="singleAuto.pts" placeholder="птс"/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4 clearfix"><label class="input-title">Кузов:</label></div>
+                            <div class="col-sm-8 clearfix">
+                                <input type="text" name="frame" v-model="singleAuto.frame" placeholder="кузов"/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4 clearfix"><label class="input-title">Пробег:</label></div>
+                            <div class="col-sm-8 clearfix">
+                                <input type="text" name="mileage" v-model="singleAuto.mileage" placeholder="100000"/>
+                            </div>
+                        </div>
+
+
+
                         <div class="row">
                             <div class="col-sm-4 clearfix"><label class="input-title">Регистрационный номер:</label></div>
                             <div class="col-sm-8 clearfix">

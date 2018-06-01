@@ -71,6 +71,7 @@ class UserRepository
         $user = $this->user->find($singleCustomer['id']);
         $user->name = $singleCustomer['name'];
         $user->login = $singleCustomer['login'];
+        $user->phone = $singleCustomer['phone'];
         $user->password = $singleCustomer['password'];
         $user->save();
 

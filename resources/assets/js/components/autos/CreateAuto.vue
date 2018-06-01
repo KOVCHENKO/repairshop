@@ -31,9 +31,32 @@
                         <div class="row">
                             <div class="col-sm-4 clearfix"><label class="input-title">Vin:</label></div>
                             <div class="col-sm-8 clearfix">
-                                <input type="text" name="vin" v-model="singleAuto.vin" placeholder="AA0AA000A0A0000000" v-validate="'required|max:255'"/>
+                                <input type="text" name="vin" v-model="singleAuto.vin" placeholder="AA0AA000A0A0000000"/>
                             </div>
                         </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-4 clearfix"><label class="input-title">ПТС:</label></div>
+                            <div class="col-sm-8 clearfix">
+                                <input type="text" name="pts" v-model="singleAuto.pts" placeholder="птс"/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4 clearfix"><label class="input-title">Кузов:</label></div>
+                            <div class="col-sm-8 clearfix">
+                                <input type="text" name="frame" v-model="singleAuto.frame" placeholder="кузов"/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4 clearfix"><label class="input-title">Пробег:</label></div>
+                            <div class="col-sm-8 clearfix">
+                                <input type="text" name="mileage" v-model="singleAuto.mileage" placeholder="100000"/>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-sm-4 clearfix"><label class="input-title">Регистрационный номер:</label></div>
                             <div class="col-sm-8 clearfix">
@@ -63,7 +86,6 @@
                         <div class="row">
                             <div class="col-sm-12 clearfix">
                                 <p class="validation-error" v-show="errors.has('brand')">поле "марка" не заполнено или имеет неправильный формат</p>
-                                <p class="validation-error" v-show="errors.has('vin')">поле "vin" не заполнено или имеет неправильный формат</p>
                                 <p class="validation-error" v-show="errors.has('reg_number')">поле "номер авто" не заполнено или имеет неправильный формат</p>
                                 <p class="validation-error" v-show="errors.has('year')">поле "год" не заполнено или имеет неправильный формат</p>
                                 <p class="validation-error" v-show="errors.has('volume')">поле "объем" не заполнено или имеет неправильный формат</p>

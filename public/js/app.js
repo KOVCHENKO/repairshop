@@ -67741,6 +67741,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         createOption: function createOption() {
             this.singleAuto.id = 0;
             this.singleAuto.vin = '';
+            this.singleAuto.pts = '';
+            this.singleAuto.frame = '';
+            this.singleAuto.mileage = '';
             this.singleAuto.reg_number = '';
             this.singleAuto.year = '';
             this.singleAuto.volume = '';
@@ -67878,6 +67881,28 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -68130,12 +68155,6 @@ var render = function() {
                           rawName: "v-model",
                           value: _vm.singleAuto.vin,
                           expression: "singleAuto.vin"
-                        },
-                        {
-                          name: "validate",
-                          rawName: "v-validate",
-                          value: "required|max:255",
-                          expression: "'required|max:255'"
                         }
                       ],
                       attrs: {
@@ -68158,6 +68177,99 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
                   _vm._m(3),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-8 clearfix" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.singleAuto.pts,
+                          expression: "singleAuto.pts"
+                        }
+                      ],
+                      attrs: { type: "text", name: "pts", placeholder: "птс" },
+                      domProps: { value: _vm.singleAuto.pts },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.singleAuto, "pts", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _vm._m(4),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-8 clearfix" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.singleAuto.frame,
+                          expression: "singleAuto.frame"
+                        }
+                      ],
+                      attrs: {
+                        type: "text",
+                        name: "frame",
+                        placeholder: "кузов"
+                      },
+                      domProps: { value: _vm.singleAuto.frame },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.singleAuto, "frame", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _vm._m(5),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-8 clearfix" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.singleAuto.mileage,
+                          expression: "singleAuto.mileage"
+                        }
+                      ],
+                      attrs: {
+                        type: "text",
+                        name: "mileage",
+                        placeholder: "100000"
+                      },
+                      domProps: { value: _vm.singleAuto.mileage },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.singleAuto,
+                            "mileage",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _vm._m(6),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-sm-8 clearfix" }, [
                     _c("input", {
@@ -68198,7 +68310,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
-                  _vm._m(4),
+                  _vm._m(7),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-sm-8 clearfix" }, [
                     _c("input", {
@@ -68235,7 +68347,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
-                  _vm._m(5),
+                  _vm._m(8),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-sm-8 clearfix" }, [
                     _c("input", {
@@ -68276,7 +68388,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
-                  _vm._m(6),
+                  _vm._m(9),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-sm-8 clearfix" }, [
                     _c(
@@ -68343,26 +68455,6 @@ var render = function() {
                       [
                         _vm._v(
                           'поле "марка" не заполнено или имеет неправильный формат'
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "p",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.errors.has("vin"),
-                            expression: "errors.has('vin')"
-                          }
-                        ],
-                        staticClass: "validation-error"
-                      },
-                      [
-                        _vm._v(
-                          'поле "vin" не заполнено или имеет неправильный формат'
                         )
                       ]
                     ),
@@ -68492,6 +68584,30 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-sm-4 clearfix" }, [
+      _c("label", { staticClass: "input-title" }, [_vm._v("ПТС:")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-4 clearfix" }, [
+      _c("label", { staticClass: "input-title" }, [_vm._v("Кузов:")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-4 clearfix" }, [
+      _c("label", { staticClass: "input-title" }, [_vm._v("Пробег:")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-4 clearfix" }, [
       _c("label", { staticClass: "input-title" }, [
         _vm._v("Регистрационный номер:")
       ])
@@ -68584,6 +68700,30 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -68836,6 +68976,99 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
+                          value: _vm.singleAuto.pts,
+                          expression: "singleAuto.pts"
+                        }
+                      ],
+                      attrs: { type: "text", name: "pts", placeholder: "птс" },
+                      domProps: { value: _vm.singleAuto.pts },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.singleAuto, "pts", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _vm._m(4),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-8 clearfix" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.singleAuto.frame,
+                          expression: "singleAuto.frame"
+                        }
+                      ],
+                      attrs: {
+                        type: "text",
+                        name: "frame",
+                        placeholder: "кузов"
+                      },
+                      domProps: { value: _vm.singleAuto.frame },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.singleAuto, "frame", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _vm._m(5),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-8 clearfix" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.singleAuto.mileage,
+                          expression: "singleAuto.mileage"
+                        }
+                      ],
+                      attrs: {
+                        type: "text",
+                        name: "mileage",
+                        placeholder: "100000"
+                      },
+                      domProps: { value: _vm.singleAuto.mileage },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.singleAuto,
+                            "mileage",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _vm._m(6),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-8 clearfix" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
                           value: _vm.singleAuto.reg_number,
                           expression: "singleAuto.reg_number"
                         }
@@ -68863,7 +69096,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
-                  _vm._m(4),
+                  _vm._m(7),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-sm-8 clearfix" }, [
                     _c("input", {
@@ -68890,7 +69123,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
-                  _vm._m(5),
+                  _vm._m(8),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-sm-8 clearfix" }, [
                     _c("input", {
@@ -68925,7 +69158,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
-                  _vm._m(6),
+                  _vm._m(9),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-sm-8 clearfix" }, [
                     _c(
@@ -69030,6 +69263,30 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-sm-4 clearfix" }, [
       _c("label", { staticClass: "input-title" }, [_vm._v("Vin:")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-4 clearfix" }, [
+      _c("label", { staticClass: "input-title" }, [_vm._v("ПТС:")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-4 clearfix" }, [
+      _c("label", { staticClass: "input-title" }, [_vm._v("Кузов:")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-4 clearfix" }, [
+      _c("label", { staticClass: "input-title" }, [_vm._v("Пробег:")])
     ])
   },
   function() {
@@ -69405,6 +69662,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -69553,6 +69818,41 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
+                          value: _vm.singleCustomer.phone,
+                          expression: "singleCustomer.phone"
+                        }
+                      ],
+                      attrs: {
+                        type: "text",
+                        name: "Телефон",
+                        placeholder: "87778887788"
+                      },
+                      domProps: { value: _vm.singleCustomer.phone },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.singleCustomer,
+                            "phone",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _vm._m(4),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-8 clearfix" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
                           value: _vm.singleCustomer.password,
                           expression: "singleCustomer.password"
                         }
@@ -69645,6 +69945,14 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-sm-4 clearfix" }, [
+      _c("label", { staticClass: "input-title" }, [_vm._v("Телефон:")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-4 clearfix" }, [
       _c("label", { staticClass: "input-title" }, [_vm._v("Пароль:")])
     ])
   }
@@ -69711,6 +70019,14 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -69900,6 +70216,41 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
+                          value: _vm.singleCustomer.phone,
+                          expression: "singleCustomer.phone"
+                        }
+                      ],
+                      attrs: {
+                        type: "text",
+                        name: "Телефон",
+                        placeholder: "87778887788"
+                      },
+                      domProps: { value: _vm.singleCustomer.phone },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.singleCustomer,
+                            "phone",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _vm._m(4),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-8 clearfix" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
                           value: _vm.singleCustomer.password,
                           expression: "singleCustomer.password"
                         }
@@ -69985,6 +70336,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-sm-4 clearfix" }, [
       _c("label", { staticClass: "input-title" }, [_vm._v("Логин:")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-4 clearfix" }, [
+      _c("label", { staticClass: "input-title" }, [_vm._v("Телефон:")])
     ])
   },
   function() {
@@ -72144,7 +72503,10 @@ var state = {
         year: '',
         volume: 0,
         transmission: '',
-        image: ''
+        image: '',
+        pts: '',
+        frame: '',
+        mileage: ''
     },
 
     chosenAuto: {
@@ -72155,7 +72517,10 @@ var state = {
         year: '',
         volume: 0,
         transmission: '',
-        image: ''
+        image: '',
+        pts: '',
+        frame: '',
+        mileage: ''
     }
 };
 
@@ -72201,6 +72566,7 @@ var state = {
         name: '',
         login: '',
         password: '',
+        phone: '',
         role: 'customer'
     },
 
@@ -72208,6 +72574,7 @@ var state = {
         id: 0,
         name: '',
         login: '',
+        phone: '',
         password: ''
     }
 };

@@ -5,6 +5,7 @@ const state = {
         name: '',
         login: '',
         password: '',
+        phone: '',
         role: 'customer'
     },
 
@@ -12,6 +13,7 @@ const state = {
         id: 0,
         name: '',
         login: '',
+        phone: '',
         password: ''
     }
 };

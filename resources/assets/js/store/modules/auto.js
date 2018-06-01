@@ -8,7 +8,10 @@ const state = {
         year: '',
         volume: 0,
         transmission: '',
-        image: ''
+        image: '',
+        pts: '',
+        frame: '',
+        mileage: ''
     },
 
     chosenAuto: {
@@ -19,7 +22,10 @@ const state = {
         year: '',
         volume: 0,
         transmission: '',
-        image: ''
+        image: '',
+        pts: '',
+        frame: '',
+        mileage: ''
     }
 };
 
