@@ -26,8 +26,9 @@ let routes = [
             {path: '/manager/menu', component: require('./components/main_interface_manager/Menu.vue')},  // Основное меню
             {path: '/orders/show', component: require('./components/orders/Show.vue')},                   // Заказы ремонтной мастерской
             {path: '/autos/show', component: require('./components/autos/Show.vue')},                     // Автомобили ремонтной мастерской
-            {path: '/customers/show', component: require('./components/customers/Show.vue')},                 // Клиенты в ремонтной мастерской
-            {path: '/orders/show/:just_show', component: require('./components/orders/Show.vue')},                 // Клиенты в ремонтной мастерской
+            {path: '/customers/show', component: require('./components/customers/Show.vue')},             // Клиенты в ремонтной мастерской
+            {path: '/orders/show/:just_show', component: require('./components/orders/Show.vue')},        // Заказы ремонтной мастерской
+            {path: '/calendar/show', component: require('./components/calendar/Show.vue')},               // Календарь
         ]
     },
 

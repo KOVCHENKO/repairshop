@@ -21,6 +21,13 @@ Vue.use(Notifications);
 // import VueGoodWizard from './components/main_interface_manager/Wizard';
 // Vue.use(VueGoodWizard);
 
+// Для операций со временем
+window.moment = require('moment');
+
+import 'vue2-event-calendar/default.css'
+import Calendar from 'vue2-event-calendar/dist/calendar-nodep.js'
+Vue.component('Calendar', Calendar)
+
 window._ = require('lodash');
 window.Popper = require('popper.js').default;
 

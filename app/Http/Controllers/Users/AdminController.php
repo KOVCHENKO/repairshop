@@ -23,9 +23,9 @@ class AdminController extends Controller
     public function create(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'login' => 'required',
-            'password' => 'required',
+            'singleAdmin.name' => 'required',
+            'singleAdmin.login' => 'required',
+            'singleAdmin.password' => 'required',
         ]);
 
         return $this->userRepository->createAdmin($request->singleAdmin);
@@ -34,10 +34,11 @@ class AdminController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'login' => 'required',
-            'password' => 'required',
+            'singleAdmin.name' => 'required',
+            'singleAdmin.login' => 'required',
+            'singleAdmin.password' => 'required',
         ]);
+
 
         return $this->userRepository->updateUser($request->singleAdmin);
     }
