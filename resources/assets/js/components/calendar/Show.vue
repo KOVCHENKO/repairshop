@@ -1,9 +1,9 @@
 <template>
     <div>
-        <Calendar startDate="2018-03-07" :dateData="data">
+        <Calendar startDate="2018-05-07" :dateData="data">
             <div slot="header-left">
-                <Button>month</Button>
-                <Button>week</Button>
+                <Button>месяц</Button>
+                <Button>неделя</Button>
             </div>
 
             <div
@@ -41,7 +41,16 @@
         data() {
             return {
                 isCurMonth: '',
-                data: [],
+                data: [
+                    {
+                        date: "2018-05-07",
+                        title: 'new'
+                    },
+                    {
+                        date: "2018-05-15",
+                        title: 'new'
+                    }
+                ],
                 events: [
                     {
                         title: 'test',

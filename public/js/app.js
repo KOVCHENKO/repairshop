@@ -70551,7 +70551,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             isCurMonth: '',
-            data: [],
+            data: [{
+                date: "2018-05-07",
+                title: 'new'
+            }, {
+                date: "2018-05-15",
+                title: 'new'
+            }],
             events: [{
                 title: 'test',
                 allDay: true,
@@ -70594,7 +70600,7 @@ var render = function() {
       _c(
         "Calendar",
         {
-          attrs: { startDate: "2018-03-07", dateData: _vm.data },
+          attrs: { startDate: "2018-05-07", dateData: _vm.data },
           scopedSlots: _vm._u([
             {
               key: "default",
@@ -70630,9 +70636,9 @@ var render = function() {
             "div",
             { attrs: { slot: "header-left" }, slot: "header-left" },
             [
-              _c("Button", [_vm._v("month")]),
+              _c("Button", [_vm._v("месяц")]),
               _vm._v(" "),
-              _c("Button", [_vm._v("week")])
+              _c("Button", [_vm._v("неделя")])
             ],
             1
           )
