@@ -69,4 +69,4 @@ Route::get('/customer/get_all', 'Users\CustomerController@getAll');
 Route::post('/customer/create', 'Users\CustomerController@create');
 Route::post('/customer/update', 'Users\CustomerController@update');
 Route::get('/customer/get_by_id/{id}', 'Users\CustomerController@getById');
-Route::get('/customer/delete/{id}', 'Users\AutoController@delete');
+Route::get('/customer/delete/{id}', 'Users\CustomerController@delete');

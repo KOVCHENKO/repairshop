@@ -78539,9 +78539,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         remove: function remove() {
             var _this = this;
 
+            var self = this;
             axios.get('/service/delete/' + this.row.id).then(function (response) {
                 _this.$store.dispatch('getAllServices');
-            }).catch(function (error) {});
+            }).catch(function (error) {
+                self.$notify({
+                    title: 'Предупреждение',
+                    text: 'Услуга не может быть удалена, так как она уже включена в заказ или используется в системе другими пользователями',
+                    type: 'warning'
+                });
+            });
         }
     }
 }));
@@ -82521,6 +82528,10 @@ Vue.component('actions-services-to-order', {
             axios.get('/spare/check_if_available_at_store/' + this.row.id).then(function (response) {
                 if (response.data.result === true) {
                     _this.$store.state.service.chosenServices.push(_this.row);
+                    var serviceIndex = _this.$store.state.service.services.findIndex(function (x) {
+                        return x.id === _this.row.id;
+                    });
+                    _this.$store.state.service.services.splice(serviceIndex, 1);
                 } else {
                     self.$notify({
                         title: 'Сообщение',
@@ -87123,9 +87134,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         remove: function remove() {
             var _this = this;
 
+            var self = this;
             axios.get('/customer/delete/' + this.row.id).then(function (response) {
                 _this.$store.dispatch('getAllCustomers');
-            }).catch(function (error) {});
+            }).catch(function (error) {
+                self.$notify({
+                    title: 'Предупреждение',
+                    text: 'Клиент не может быть удален, так как он уже включена в заказ или используется в системе другими пользователями',
+                    type: 'warning'
+                });
+            });
         }
     }
 }));

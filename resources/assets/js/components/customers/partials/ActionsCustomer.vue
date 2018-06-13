@@ -11,9 +11,16 @@
             },
 
             remove() {
+                let self = this;
                 axios.get('/customer/delete/' + this.row.id).then(response => {
                     this.$store.dispatch('getAllCustomers');
-                }).catch(function (error) {});
+                }).catch(function (error) {
+                    self.$notify({
+                        title: 'Предупреждение',
+                        text: 'Клиент не может быть удален, так как он уже включена в заказ или используется в системе другими пользователями',
+                        type: 'warning'
+                    });
+                });
             }
         }
     });

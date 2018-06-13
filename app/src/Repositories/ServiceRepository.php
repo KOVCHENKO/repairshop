@@ -37,6 +37,10 @@ class ServiceRepository
 
     public function delete($id)
     {
+        $service = $this->service->find($id);
+        $service->delete();
+
+        return $id;
     }
 
     public function getByIdWithSpares($id)

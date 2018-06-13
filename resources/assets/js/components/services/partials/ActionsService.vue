@@ -12,9 +12,16 @@
             },
 
             remove() {
+                let self = this;
                 axios.get('/service/delete/' + this.row.id).then(response => {
                     this.$store.dispatch('getAllServices');
-                }).catch(function (error) {});
+                }).catch(function (error) {
+                    self.$notify({
+                        title: 'Предупреждение',
+                        text: 'Услуга не может быть удалена, так как она уже включена в заказ или используется в системе другими пользователями',
+                        type: 'warning'
+                    });
+                });
             }
         }
     });

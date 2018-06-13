@@ -32,6 +32,8 @@
                 axios.get('/spare/check_if_available_at_store/' + this.row.id).then(response => {
                     if (response.data.result === true) {
                         this.$store.state.service.chosenServices.push(this.row);
+                        let serviceIndex = this.$store.state.service.services.findIndex(x => x.id === this.row.id);
+                        this.$store.state.service.services.splice(serviceIndex, 1);
                     } else {
                         self.$notify({
                             title: 'Сообщение',
