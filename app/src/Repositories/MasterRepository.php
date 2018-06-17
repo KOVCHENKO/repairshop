@@ -60,5 +60,15 @@ class MasterRepository
         return true;
     }
 
+    public function estimateHours($data)
+    {
+        return DB::table('orders_masters')
+            ->join('orders', 'orders.id', '=', 'orders_masters.order_id')
+            ->where('orders_masters.master_id', $data['master']['id'])
+            ->where('orders.created_at', '>', $data['from'])
+            ->where('orders.created_at', '<', $data['to'])
+            ->get();
+    }
+
 
 }

@@ -17,6 +17,9 @@ class Auto extends Model
         'year',
         'volume',
         'transmission',
-        'image'
+        'image',
+        'pts',
+        'mileage',
+        'frame'
     ];
 }

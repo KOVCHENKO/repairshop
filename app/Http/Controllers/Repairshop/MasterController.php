@@ -39,4 +39,10 @@ class MasterController extends Controller
     {
         return $this->masterRepository->delete($id);
     }
+
+    public function estimateHours(Request $request)
+    {
+        $ordersOfMaster = $this->masterRepository->estimateHours($request->all());
+        return $ordersOfMaster->sum('labor_hours');
+    }
 }

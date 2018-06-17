@@ -29,6 +29,7 @@
                     </div>
 
                     <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" @click="hoursReport">Отчет по часам</button>
                         <button type="button" class="btn btn-primary" @click="update">Изменить</button>
                         <button type="button" class="btn btn-warning" data-dismiss="modal">Закрыть</button>
                     </div>
@@ -36,11 +37,19 @@
             </div>
         </div>
 
+        <hours-report></hours-report>
+
     </div>
 </template>
 
 <script>
+    import HoursReport from './partials/HoursReport';
+
     export default {
+        components: {
+            hoursReport: HoursReport
+        },
+
         data() {
             return {
 
@@ -72,6 +81,10 @@
                     this.$store.dispatch('getAllMasters');
                     $('#singleMasterModal').modal('hide');
                 }).catch(function (error) {});
+            },
+
+            hoursReport() {
+                $('#hoursReportModal').modal('show');
             }
         }
 

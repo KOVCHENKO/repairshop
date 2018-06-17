@@ -21,6 +21,7 @@ Route::post('/master/create', 'Repairshop\MasterController@create');
 Route::post('/master/update', 'Repairshop\MasterController@update');
 Route::get('/master/get_by_id/{id}', 'Repairshop\MasterController@getById');
 Route::get('/master/delete/{id}', 'Repairshop\MasterController@delete');
+Route::post('/master/estimate_hours', 'Repairshop\MasterController@estimateHours');
 
 /* Маршруты управления запасными частями */
 Route::get('/spare/get_all', 'Repairshop\SpareController@getAll');

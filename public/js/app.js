@@ -77020,6 +77020,11 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__partials_HoursReport__ = __webpack_require__(384);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__partials_HoursReport___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__partials_HoursReport__);
+//
+//
+//
 //
 //
 //
@@ -77062,7 +77067,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        hoursReport: __WEBPACK_IMPORTED_MODULE_0__partials_HoursReport___default.a
+    },
+
     data: function data() {
         return {};
     },
@@ -77103,6 +77114,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.$store.dispatch('getAllMasters');
                 $('#singleMasterModal').modal('hide');
             }).catch(function (error) {});
+        },
+        hoursReport: function hoursReport() {
+            $('#hoursReportModal').modal('show');
         }
     }
 
@@ -77116,159 +77130,178 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      {
-        staticClass: "modal fade bs-example-modal-lg",
-        attrs: {
-          id: "singleMasterModal",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "singleMasterModalLabel"
-        }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "modal-dialog modal-lg", attrs: { role: "document" } },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c("div", { staticClass: "row" }, [
-                  _vm._m(1),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-8 clearfix" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.singleMaster.name,
-                          expression: "singleMaster.name"
-                        }
-                      ],
-                      attrs: {
-                        type: "text",
-                        name: "Наименование",
-                        placeholder: "Имя"
-                      },
-                      domProps: { value: _vm.singleMaster.name },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+  return _c(
+    "div",
+    [
+      _c(
+        "div",
+        {
+          staticClass: "modal fade bs-example-modal-lg",
+          attrs: {
+            id: "singleMasterModal",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "singleMasterModalLabel"
+          }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "modal-dialog modal-lg",
+              attrs: { role: "document" }
+            },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-8 clearfix" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.singleMaster.name,
+                            expression: "singleMaster.name"
                           }
-                          _vm.$set(
-                            _vm.singleMaster,
-                            "name",
-                            $event.target.value
-                          )
+                        ],
+                        attrs: {
+                          type: "text",
+                          name: "Наименование",
+                          placeholder: "Имя"
+                        },
+                        domProps: { value: _vm.singleMaster.name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.singleMaster,
+                              "name",
+                              $event.target.value
+                            )
+                          }
                         }
-                      }
-                    })
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-8 clearfix" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.singleMaster.rate,
+                            expression: "singleMaster.rate"
+                          }
+                        ],
+                        attrs: {
+                          type: "text",
+                          name: "Наименование",
+                          placeholder: "Ставка"
+                        },
+                        domProps: { value: _vm.singleMaster.rate },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.singleMaster,
+                              "rate",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _vm._m(3),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-8 clearfix" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.singleMaster.position,
+                            expression: "singleMaster.position"
+                          }
+                        ],
+                        attrs: {
+                          type: "text",
+                          name: "Должность",
+                          placeholder: "Должность"
+                        },
+                        domProps: { value: _vm.singleMaster.position },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.singleMaster,
+                              "position",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _vm._m(2),
+                _c("div", { staticClass: "modal-footer" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: { type: "button" },
+                      on: { click: _vm.hoursReport }
+                    },
+                    [_vm._v("Отчет по часам")]
+                  ),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-8 clearfix" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.singleMaster.rate,
-                          expression: "singleMaster.rate"
-                        }
-                      ],
-                      attrs: {
-                        type: "text",
-                        name: "Наименование",
-                        placeholder: "Ставка"
-                      },
-                      domProps: { value: _vm.singleMaster.rate },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.singleMaster,
-                            "rate",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _vm._m(3),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: { type: "button" },
+                      on: { click: _vm.update }
+                    },
+                    [_vm._v("Изменить")]
+                  ),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-8 clearfix" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.singleMaster.position,
-                          expression: "singleMaster.position"
-                        }
-                      ],
-                      attrs: {
-                        type: "text",
-                        name: "Должность",
-                        placeholder: "Должность"
-                      },
-                      domProps: { value: _vm.singleMaster.position },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.singleMaster,
-                            "position",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    })
-                  ])
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-warning",
+                      attrs: { type: "button", "data-dismiss": "modal" }
+                    },
+                    [_vm._v("Закрыть")]
+                  )
                 ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary",
-                    attrs: { type: "button" },
-                    on: { click: _vm.update }
-                  },
-                  [_vm._v("Изменить")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-warning",
-                    attrs: { type: "button", "data-dismiss": "modal" }
-                  },
-                  [_vm._v("Закрыть")]
-                )
               ])
-            ])
-          ]
-        )
-      ]
-    )
-  ])
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c("hours-report")
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -93533,6 +93566,323 @@ class Handler {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 382 */,
+/* 383 */,
+/* 384 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(385)
+/* template */
+var __vue_template__ = __webpack_require__(386)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/masters/partials/HoursReport.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1c1827ca", Component.options)
+  } else {
+    hotAPI.reload("data-v-1c1827ca", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 385 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker__ = __webpack_require__(281);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+var date = {
+    from: new Date(2018, 9, 16),
+    to: new Date(2018, 10, 16)
+};
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        'datepicker': __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker__["a" /* default */]
+    },
+
+    data: function data() {
+        return {
+            date: {
+                from: new Date(2018, 4, 1),
+                to: new Date(2018, 10, 16)
+            },
+
+            estimatedHours: 0
+        };
+    },
+
+
+    methods: {
+        estimateHours: function estimateHours() {
+            var _this = this;
+
+            axios.post('/master/estimate_hours', {
+                master: this.$store.state.master.singleMaster,
+                from: this.date.from,
+                to: this.date.to
+            }).then(function (response) {
+                _this.estimatedHours = response.data + ' час(а/ов)';
+            }).catch(function (error) {});
+        },
+        hoursReport: function hoursReport() {}
+    }
+
+});
+
+/***/ }),
+/* 386 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass: "modal fade bs-example-modal-lg",
+        attrs: {
+          id: "hoursReportModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "hoursReportModalLabel"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog modal-lg", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c("div", { staticClass: "row" }, [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-sm-8 clearfix" },
+                    [
+                      _c("datepicker", {
+                        attrs: { value: _vm.date.from },
+                        model: {
+                          value: _vm.date.from,
+                          callback: function($$v) {
+                            _vm.$set(_vm.date, "from", $$v)
+                          },
+                          expression: "date.from"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-sm-8 clearfix" },
+                    [
+                      _c("datepicker", {
+                        attrs: { value: _vm.date.from },
+                        model: {
+                          value: _vm.date.to,
+                          callback: function($$v) {
+                            _vm.$set(_vm.date, "to", $$v)
+                          },
+                          expression: "date.to"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-8 clearfix" }, [
+                    _c("label", { staticClass: "input-title" }, [
+                      _vm._v(_vm._s(_vm.estimatedHours))
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button" },
+                    on: { click: _vm.estimateHours }
+                  },
+                  [_vm._v("Рассчитать")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-warning",
+                    attrs: { type: "button", "data-dismiss": "modal" },
+                    on: {
+                      click: function($event) {
+                        _vm.estimatedHours = 0
+                      }
+                    }
+                  },
+                  [_vm._v("Закрыть")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title", attrs: { id: "hoursReportModalLabel" } },
+        [_vm._v("Часы работы по времени")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-4 clearfix" }, [
+      _c("label", { staticClass: "input-title" }, [
+        _c("strong", [_vm._v("От:")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-4 clearfix" }, [
+      _c("label", { staticClass: "input-title" }, [
+        _c("strong", [_vm._v("До:")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-4 clearfix" }, [
+      _c("label", { staticClass: "input-title" }, [
+        _c("strong", [_vm._v("Кол-во часов:")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1c1827ca", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

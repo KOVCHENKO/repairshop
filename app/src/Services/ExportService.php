@@ -93,7 +93,7 @@ class ExportService
 
         $html .= "</table>";
 
-        
+
         /* Про авто */
         $html.= '<h4>Информация об авто:</h4>';
         $html.= '<p>vin номер: '.$singleOrder->auto->vin.'</p>';
