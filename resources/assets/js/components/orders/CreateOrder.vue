@@ -214,10 +214,26 @@
                     });
 
                     this.$store.dispatch('getAllOrders');
+
+                    this.cleanFields();
+
                     $('#createOrderModal').modal('hide');
 
                     console.log('Order has been create')
                 }).catch(function (error) {});
+            },
+
+            cleanFields() {
+                this.$store.state.service.chosenServices = [];
+                this.$store.state.spare.chosenSpares = [];
+                this.$store.state.master.chosenMasters = [];
+                this.$store.state.master.chosenMasters = [];
+
+                this.$store.state.customer.chosenCustomer.id = 0;
+                this.$store.state.customer.chosenCustomer.name = '';
+                this.$store.state.customer.chosenCustomer.login = '';
+                this.$store.state.customer.chosenCustomer.phone = '';
+                this.$store.state.customer.chosenCustomer.password = '';
             }
 
         }

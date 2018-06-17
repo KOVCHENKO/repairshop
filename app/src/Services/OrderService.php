@@ -55,6 +55,8 @@ class OrderService
 
         $this->orderRepository->changeName($orderId);
 
+        $this->cleanUsedSparesForOrder();
+
         return $orderId;
     }
 
@@ -173,6 +175,12 @@ class OrderService
         }
 
         return $sparesCost;
+    }
+
+    private function cleanUsedSparesForOrder()
+    {
+        $sparesUsedForOrder = array();
+        Session::put('sparesInOrder', $sparesUsedForOrder);
     }
 
 }
