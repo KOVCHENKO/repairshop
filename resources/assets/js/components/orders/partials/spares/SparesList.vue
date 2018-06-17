@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-sm-5 clearfix"><label class="input-title">Кол-во под заказ:</label></div>
             <div class="col-sm-2 clearfix">
-                <input type="number" name="часы работы" v-model="$store.state.spare.sparesForOrder" placeholder="Необходимые запчасти"/>
+                <input type="number" min="1" name="кол-во" v-model="$store.state.spare.sparesForOrder" placeholder="Необходимые запчасти"/>
             </div>
         </div>
 
@@ -51,7 +51,7 @@
                     } else {
                         self.$notify({
                             title: 'Сообщение',
-                            text: 'Нет необходимого количества запчастей на складе',
+                            text: 'Нет необходимого количества запчастей на складе или они были использованы во вкладке "услуги"',
                             type: 'warning'
                         });
                     }

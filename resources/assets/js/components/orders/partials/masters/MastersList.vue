@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-sm-5 clearfix"><label class="input-title">Часы работы:</label></div>
             <div class="col-sm-2 clearfix">
-                <input type="number" name="часы работы" v-model="$store.state.master.laborHours" placeholder="часы работы"/>
+                <input type="number" min="1" name="часы работы" v-model="$store.state.master.laborHours" placeholder="часы работы"/>
             </div>
         </div>
 

@@ -19,18 +19,21 @@ class OrderService
     protected $masterRepository;
     protected $spareRepository;
     protected $exportService;
+    protected $spareService;
 
     public function __construct(ServiceRepository $serviceRepository,
                                 OrderRepository $orderRepository,
                                 MasterRepository $masterRepository,
                                 SpareRepository $spareRepository,
-                                ExportService $exportService)
+                                ExportService $exportService,
+                                SpareService $spareService)
     {
         $this->serviceRepository = $serviceRepository;
         $this->orderRepository = $orderRepository;
         $this->masterRepository = $masterRepository;
         $this->spareRepository = $spareRepository;
         $this->exportService = $exportService;
+        $this->spareService = $spareService;
     }
 
     /**
@@ -164,6 +167,8 @@ class OrderService
     {
         foreach ($chosenSpares as $singleChosenSpare) {
             $this->spareRepository->bindSpareToOrder($singleChosenSpare, $orderId);
+
+            $this->spareService->minusSparesFromStore($singleChosenSpare);
         }
     }
 

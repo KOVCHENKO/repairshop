@@ -12,7 +12,7 @@ const state = {
 
     sparesOfService: [],
 
-    sparesForOrder: 0,
+    sparesForOrder: 1,
 
     chosenSpares: []
 };

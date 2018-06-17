@@ -81207,13 +81207,22 @@ var state = {
                 $('#createOrderModal').modal('hide');
 
                 console.log('Order has been create');
-            }).catch(function (error) {});
+            }).catch(function (error) {
+                _this2.$notify({
+                    title: 'Ошибка',
+                    text: 'Не были заполнены все поля. Необходимо вернуться и заполнить всю информацию',
+                    type: 'warning'
+                });
+            });
         },
         cleanFields: function cleanFields() {
             this.$store.state.service.chosenServices = [];
             this.$store.state.spare.chosenSpares = [];
+            this.$store.state.spare.sparesForOrder = 1;
+
             this.$store.state.master.chosenMasters = [];
             this.$store.state.master.chosenMasters = [];
+            this.$store.state.master.laborHours = 1;
 
             this.$store.state.customer.chosenCustomer.id = 0;
             this.$store.state.customer.chosenCustomer.name = '';
@@ -82920,6 +82929,7 @@ var render = function() {
           ],
           attrs: {
             type: "number",
+            min: "1",
             name: "часы работы",
             placeholder: "часы работы"
           },
@@ -83093,7 +83103,7 @@ Vue.component('actions-spares-to-order', {
                 } else {
                     self.$notify({
                         title: 'Сообщение',
-                        text: 'Нет необходимого количества запчастей на складе',
+                        text: 'Нет необходимого количества запчастей на складе или они были использованы во вкладке "услуги"',
                         type: 'warning'
                     });
                 }
@@ -83198,7 +83208,8 @@ var render = function() {
           ],
           attrs: {
             type: "number",
-            name: "часы работы",
+            min: "1",
+            name: "кол-во",
             placeholder: "Необходимые запчасти"
           },
           domProps: { value: _vm.$store.state.spare.sparesForOrder },
@@ -91430,7 +91441,7 @@ var state = {
 
     sparesOfService: [],
 
-    sparesForOrder: 0,
+    sparesForOrder: 1,
 
     chosenSpares: []
 };

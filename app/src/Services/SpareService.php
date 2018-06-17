@@ -62,12 +62,19 @@ class SpareService
 
         }
 
-
-
         if ((int)$spare->quantity < (int)$quantityForOrder) {
             return false;
         }
 
         return true;
+    }
+
+
+    public function minusSparesFromStore($singleChosenSpare)
+    {
+        $singleSpare = $this->spareRepository->getById($singleChosenSpare['id']);
+
+        $singleSpare->quantity = $singleSpare->quantity - $singleChosenSpare['sparesForOrder'];
+        $singleSpare->save();
     }
 }

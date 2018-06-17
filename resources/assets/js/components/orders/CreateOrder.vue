@@ -206,7 +206,7 @@
                     chosenMasters: this.$store.state.master.chosenMasters,
                     chosenCustomer: this.$store.state.customer.chosenCustomer,
                     chosenSpares: this.$store.state.spare.chosenSpares
-                }).then(response => {
+                }).then((response) => {
                     this.$notify({
                         title: 'Информация',
                         text: 'Создан новый заказ',
@@ -220,14 +220,24 @@
                     $('#createOrderModal').modal('hide');
 
                     console.log('Order has been create')
-                }).catch(function (error) {});
+                }).catch((error) => {
+                    this.$notify({
+                        title: 'Ошибка',
+                        text: 'Не были заполнены все поля. Необходимо вернуться и заполнить всю информацию',
+                        type: 'warning'
+                    });
+
+                });
             },
 
             cleanFields() {
                 this.$store.state.service.chosenServices = [];
                 this.$store.state.spare.chosenSpares = [];
+                this.$store.state.spare.sparesForOrder = 1;
+
                 this.$store.state.master.chosenMasters = [];
                 this.$store.state.master.chosenMasters = [];
+                this.$store.state.master.laborHours = 1;
 
                 this.$store.state.customer.chosenCustomer.id = 0;
                 this.$store.state.customer.chosenCustomer.name = '';
