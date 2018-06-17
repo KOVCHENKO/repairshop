@@ -30,6 +30,9 @@ class LoginService
         $this->generateToken($user);
 
         Session::put('user_id', $user->id);
+        /* Работа с запчастями заказа */
+        $sparesInOrder = array();
+        Session::put('sparesInOrder', $sparesInOrder);
 
         return [
             'role' => $user->role

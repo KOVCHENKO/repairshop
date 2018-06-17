@@ -40,4 +40,9 @@ class Order extends Model
     {
         return $this->belongsToMany(Service::class, 'orders_services');
     }
+
+    public function spares()
+    {
+        return $this->belongsToMany(Spare::class, 'orders_spares')->withPivot('quantity as order_quantity');
+    }
 }

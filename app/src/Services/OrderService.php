@@ -7,6 +7,7 @@ use App\src\Models\Order;
 use App\src\Repositories\MasterRepository;
 use App\src\Repositories\OrderRepository;
 use App\src\Repositories\ServiceRepository;
+use App\src\Repositories\SpareRepository;
 use DateTime;
 use Illuminate\Support\Facades\Session;
 use PhpParser\Node\Expr\Cast\Object_;
@@ -16,16 +17,19 @@ class OrderService
     protected $serviceRepository;
     protected $orderRepository;
     protected $masterRepository;
+    protected $spareRepository;
     protected $exportService;
 
     public function __construct(ServiceRepository $serviceRepository,
                                 OrderRepository $orderRepository,
                                 MasterRepository $masterRepository,
+                                SpareRepository $spareRepository,
                                 ExportService $exportService)
     {
         $this->serviceRepository = $serviceRepository;
         $this->orderRepository = $orderRepository;
         $this->masterRepository = $masterRepository;
+        $this->spareRepository = $spareRepository;
         $this->exportService = $exportService;
     }
 
@@ -36,8 +40,9 @@ class OrderService
     {
         $servicesCost = $this->calculateServicesCost($data->chosenServices);
         $mastersCost = $this->calculateMastersCost($data->chosenMasters);
+        $sparesCost = $this->calculateSparesCost($data->chosenSpares);
 
-        return $servicesCost + $mastersCost;
+        return $servicesCost + $mastersCost + $sparesCost;
     }
 
     public function saveAllOrdersInformation($data)
@@ -46,6 +51,7 @@ class OrderService
 
         $this->storeOrderMasters($data->chosenMasters, $orderId);
         $this->storeOrderServices($data->chosenServices, $orderId);
+        $this->storeOrderSpares($data->chosenSpares, $orderId);
 
         $this->orderRepository->changeName($orderId);
 
@@ -150,6 +156,23 @@ class OrderService
     public function exportToPdf($orderId)
     {
        return $this->exportService->exportToPdf($orderId);
+    }
+
+    private function storeOrderSpares($chosenSpares, $orderId)
+    {
+        foreach ($chosenSpares as $singleChosenSpare) {
+            $this->spareRepository->bindSpareToOrder($singleChosenSpare, $orderId);
+        }
+    }
+
+    private function calculateSparesCost($chosenSpares)
+    {
+        $sparesCost = 0;
+        foreach ($chosenSpares as $singleChosenSpare) {
+            $sparesCost = $sparesCost + (int)$singleChosenSpare['sparesForOrder'] * (int)$singleChosenSpare['cost'];
+        }
+
+        return $sparesCost;
     }
 
 }

@@ -44,6 +44,21 @@
 
                             <div class="row">
                                 <div class="col-sm-4 clearfix">
+                                    <label class="input-title"><strong>Запчасти:</strong></label>
+                                </div>
+                                <div class="col-sm-8 clearfix">
+                                    <p v-for="singleOrderSpare in this.singleOrder.spares">
+                                        Наименование: {{ singleOrderSpare.name }},
+                                        Ед.изм: {{ singleOrderSpare.unit }},
+                                        Кол-во: {{ singleOrderSpare.order_quantity }}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="row">
+                                <div class="col-sm-4 clearfix">
                                     <label class="input-title"><strong>Мастера:</strong></label>
                                 </div>
                                 <div class="col-sm-8 clearfix">

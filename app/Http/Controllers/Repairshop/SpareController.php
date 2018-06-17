@@ -70,4 +70,13 @@ class SpareController extends Controller
             'result' => $result
         ];
     }
+
+    public function checkIfSingleAvailableAtStore($spareId, $quantityForOrder)
+    {
+        $result = $this->spareService->checkIfSingleAvailableAtStore($spareId, $quantityForOrder);
+
+        return [
+            'result' => $result
+        ];
+    }
 }

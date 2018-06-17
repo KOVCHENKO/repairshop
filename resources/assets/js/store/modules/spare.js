@@ -10,7 +10,11 @@ const state = {
 
     sparesQuantity: 1,
 
-    sparesOfService: []
+    sparesOfService: [],
+
+    sparesForOrder: 0,
+
+    chosenSpares: []
 };
 
 const mutations = {

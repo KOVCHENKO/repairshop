@@ -45,6 +45,7 @@ class OrderRepository
             ->with('customer')
             ->with('masters')
             ->with('services')
+            ->with('spares')
             ->first();
 
     }

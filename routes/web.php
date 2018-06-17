@@ -33,6 +33,8 @@ Route::get('/spare/add_to_service/{spare_id}/{service_id}/{quantity}', 'Repairsh
 Route::get('/spare/get_spares_of_service/{service_id}', 'Repairshop\SpareController@getSparesOfService');
 Route::get('/spare/delete_spares_from_service/{service_spare_id}', 'Repairshop\SpareController@deleteSparesFromService');
 Route::get('/spare/check_if_available_at_store/{service_id}', 'Repairshop\SpareController@checkAvailabilityAtStore');
+Route::get('/spare/check_if_single_available_at_store/{spare_id}/{quantity}', 'Repairshop\SpareController@checkIfSingleAvailableAtStore');
+
 
 
 /* Маршруты управления заказами */

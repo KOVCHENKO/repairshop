@@ -7,7 +7,8 @@ const state = {
         completion_date: 0,
         customer: {},
         masters: [],
-        services: []
+        services: [],
+        spares: []
     }
 };
 

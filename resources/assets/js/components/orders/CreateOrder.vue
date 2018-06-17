@@ -18,10 +18,14 @@
                                 <services-list></services-list>
                             </div>
                             <div slot="page3">
+                                <!-- Выбор запасных частей -->
+                                <spares-list></spares-list>
+                            </div>
+                            <div slot="page4">
                                 <!-- Выбор мастера -->
                                 <masters-list></masters-list>
                             </div>
-                            <div slot="page4">
+                            <div slot="page5">
                                 <!-- Выбор даты завершения работ -->
                                 <div class="row">
                                     <div class="col-sm-12 clearfix">
@@ -29,11 +33,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div slot="page5">
+                            <div slot="page6">
                                 <!-- Выбор клиента -->
                                 <customers-list></customers-list>
                             </div>
-                            <div slot="page6">
+                            <div slot="page7">
                                 <!-- Сформированный заказ -->
                                 <div class="row">
                                     <div class="col-sm-4 clearfix">
@@ -79,6 +83,19 @@
 
                                 <div class="row">
                                     <div class="col-sm-4 clearfix">
+                                        <label class="input-title"><strong>Отдельные запчасти:</strong></label>
+                                    </div>
+                                    <div class="col-sm-8 clearfix">
+                                        <p v-for="singleChosenSpare in $store.state.spare.chosenSpares">
+                                            Наименование: {{ singleChosenSpare.name }},
+                                            Ед.изм: {{ singleChosenSpare.unit }},
+                                            Кол-во: {{ singleChosenSpare.sparesForOrder }}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4 clearfix">
                                         <label class="input-title"><strong>Выполнить до:</strong></label>
                                     </div>
                                     <div class="col-sm-8 clearfix">
@@ -101,6 +118,7 @@
     import AutosList from './partials/autos/AutosList';
     import ServicesList from './partials/services/ServicesList';
     import MastersList from './partials/masters/MastersList';
+    import SparesList from './partials/spares/SparesList';
     import DatePicker from 'vuejs-datepicker';
     import Wizard from '../main_interface_manager/Wizard';
 
@@ -115,6 +133,7 @@
             autosList: AutosList,
             servicesList: ServicesList,
             mastersList: MastersList,
+            sparesList: SparesList,
             'datepicker': DatePicker,
             orderWizard: Wizard
         },
@@ -128,10 +147,11 @@
                 steps: [
                     { label: 'Автомобиль', slot: 'page1' },
                     { label: 'Услуги', slot: 'page2' },
-                    { label: 'Мастера', slot: 'page3' },
-                    { label: 'Дата завершения', slot: 'page4' },
-                    { label: 'Выберите клиента', slot: 'page5' },
-                    { label: 'Сформированный заказ', slot: 'page6' }
+                    { label: 'Зап. части', slot: 'page3' },
+                    { label: 'Мастера', slot: 'page4' },
+                    { label: 'Дата завершения', slot: 'page5' },
+                    { label: 'Клиент', slot: 'page6' },
+                    { label: 'Подтверждение', slot: 'page7' }
                 ],
 
                 state: state,
@@ -149,12 +169,12 @@
         methods: {
 
             nextClicked(currentPage) {
-                if(currentPage === 4) {
+                if(currentPage === 5) {
                     console.log("estimation");
                     this.estimate();
                 }
 
-                if(currentPage === 5) {
+                if(currentPage === 6) {
                     console.log("creation");
                     this.create();
                 }
@@ -171,6 +191,7 @@
                     singleOrder: this.singleOrder,
                     chosenServices: this.$store.state.service.chosenServices,
                     chosenMasters: this.$store.state.master.chosenMasters,
+                    chosenSpares: this.$store.state.spare.chosenSpares
                 }).then(response => {
                     this.estimation = response.data;
                 }).catch(function (error) {});
@@ -183,7 +204,8 @@
                     chosenAuto: this.$store.state.auto.chosenAuto,
                     chosenServices: this.$store.state.service.chosenServices,
                     chosenMasters: this.$store.state.master.chosenMasters,
-                    chosenCustomer: this.$store.state.customer.chosenCustomer
+                    chosenCustomer: this.$store.state.customer.chosenCustomer,
+                    chosenSpares: this.$store.state.spare.chosenSpares
                 }).then(response => {
                     this.$notify({
                         title: 'Информация',

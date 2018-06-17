@@ -4,22 +4,27 @@ namespace App\src\Services;
 
 use App\src\Repositories\OrderRepository;
 use App\src\Repositories\ServiceRepository;
+use App\src\Repositories\SpareRepository;
 use Barryvdh\DomPDF\Facade;
 
 class ExportService
 {
     protected $orderRepository;
     protected $serviceRepository;
+    protected $spareRepository;
 
-    public function __construct(OrderRepository $orderRepository, ServiceRepository $serviceRepository)
+    public function __construct(OrderRepository $orderRepository, ServiceRepository $serviceRepository, SpareRepository $spareRepository)
     {
         $this->orderRepository = $orderRepository;
         $this->serviceRepository = $serviceRepository;
+        $this->spareRepository = $spareRepository;
     }
 
     public function exportToPdf($orderId)
     {
         $singleOrder = $this->orderRepository->getById($orderId);
+
+        /* Про заказ в общем */
         $html = '<div style="font-size: 10pt">';
         $html.= '<h3>Заказ №'.$orderId.'</h3>';
         $html.= '<h4>Стоимость выполнения: '.$singleOrder->total_cost.' рублей</h4>';
@@ -27,6 +32,7 @@ class ExportService
         $html.= '<p>Дата завершения: '.$singleOrder->completion_date.'</p>';
         $html.= '<h4>Информация об услугах:</h4>';
 
+        /* Про услуги в заказе */
         foreach ($singleOrder->services as $singleChosenService) {
             $html.= '<p>Наименование: '.$singleChosenService->name.
                 '<br>Описание: '.$singleChosenService->description.
@@ -59,6 +65,36 @@ class ExportService
             $html .= "</table>";
         }
 
+        /* Про отдельные запчасти */
+
+        $html.= '<br>';
+        $html.= '<h4>Информация о запчастях:</h4>';
+
+        $html .= "<table style='border-collapse: collapse; border:1px solid; width:100%'>";
+        $html .= "<tr>
+                        <td style='border:1px solid;'>№</td>
+                        <td style='border:1px solid;'>Наименование</td>
+                        <td style='border:1px solid;'>Стоимость за ед. (руб.)</td>
+                        <td style='border:1px solid;'>Необходимое кол-во (ед.)</td>
+                        <td style='border:1px solid;'>Стоимость (руб.)</td>
+                  </tr>";
+
+        foreach ($singleOrder->spares as $k => $singleOrderSpare) {
+            $index = $k + 1;
+            $sparesOrderCost = $singleSpare->service_quantity * $singleOrderSpare->cost;
+            $html .= "<tr>
+                            <td style='border:1px solid;'>{$index}</td>
+                            <td style='border:1px solid;'>{$singleOrderSpare->name}</td>
+                            <td style='border:1px solid;'>{$singleOrderSpare->cost}</td>
+                            <td style='border:1px solid;'>{$singleOrderSpare->order_quantity}</td>
+                            <td style='border:1px solid;'>{$sparesOrderCost}</td>
+                          </tr>";
+        }
+
+        $html .= "</table>";
+
+        
+        /* Про авто */
         $html.= '<h4>Информация об авто:</h4>';
         $html.= '<p>vin номер: '.$singleOrder->auto->vin.'</p>';
         $html.= '<p>рег.номер: '.$singleOrder->auto->reg_number.'</p>';
@@ -100,12 +136,6 @@ class ExportService
 
             $html .= "</table>";
 
-
-
-//            $html.= '<p>Имя: '.$singleChosenMaster->name.
-//                '<br>Должность: '.$singleChosenMaster->position.
-//                '<br>Ставка/ч: '.$singleChosenMaster->rate.
-//                '<br>Кол-во часов: '.$singleChosenMaster->pivot->labor_hours.'</p>';
         }
 
         $html.= "<br><br>";

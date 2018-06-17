@@ -71,4 +71,16 @@ class SpareRepository
     {
         return DB::table('services_spares')->where('id', $spareServiceId)->delete();
     }
+
+    public function bindSpareToOrder($singleChosenSpare, $orderId)
+    {
+
+        DB::table('orders_spares')->insert([
+            'order_id' => $orderId,
+            'spare_id' => $singleChosenSpare['id'],
+            'quantity' => $singleChosenSpare['sparesForOrder']
+        ]);
+
+        return true;
+    }
 }
